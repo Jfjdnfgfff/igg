@@ -487,9 +487,12 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .cart-order-item-qty{font-size:10px;color:var(--gray-400)}
 .cart-order-item-price{font-weight:900;color:var(--blue);white-space:nowrap}
 .cart-order-total{margin-top:10px;padding-top:10px;border-top:1.5px dashed rgba(0,87,184,.2);display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:900;color:var(--blue-d)}
-.atc-btn{flex:1;background:linear-gradient(135deg,var(--blue),#0077cc);color:#fff;border:none;border-radius:50px;padding:7px 8px;font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:4px;transition:var(--t);box-shadow:0 3px 8px rgba(0,87,184,.22);cursor:pointer;white-space:nowrap}
-.atc-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,87,184,.32)}
-.atc-btn.added{background:linear-gradient(135deg,#0077cc,var(--blue-d))}
+.pcard-actions{display:flex;flex-direction:column;gap:7px;margin-top:auto}
+.order-now-btn{width:100%;background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff;border:none;border-radius:50px;padding:9px 10px;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:5px;transition:var(--t);box-shadow:0 4px 12px rgba(0,87,184,.30);cursor:pointer;white-space:nowrap}
+.order-now-btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,87,184,.40)}
+.atc-btn{width:100%;background:#fff;color:var(--blue);border:1.5px solid var(--blue);border-radius:50px;padding:7px 10px;font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:4px;transition:var(--t);cursor:pointer;white-space:nowrap}
+.atc-btn:hover{background:var(--blue-l);transform:translateY(-1px)}
+.atc-btn.added{background:var(--blue);color:#fff;border-color:var(--blue)}
 .modal-atc-btn{width:100%;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,var(--blue),#0077cc);color:#fff;padding:14px 22px;border-radius:var(--r-lg);font-size:14.5px;font-weight:900;border:none;transition:var(--t);box-shadow:0 6px 20px rgba(0,87,184,.25);cursor:pointer}
 .modal-atc-btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,87,184,.35)}
 @media(max-width:620px){
@@ -574,8 +577,8 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
       <span class="cart-total-val" id="cartTotalVal">0Da</span>
     </div>
     <button class="cart-checkout-btn" onclick="cartCheckout()">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2.4"><path d="M9 12l2 2 4-4M12 21c4.97-3 8-7.03 8-11.5A8 8 0 004 9.5C4 13.97 7.03 18 12 21z"/></svg>
-      الانتقال للدفع وتأكيد الطلب
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2.4"><path d="M4 4h2l1.6 9.6a2 2 0 002 1.6h8a2 2 0 002-2L21 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+      تأكيد الطلب والانتقال للدفع
     </button>
     <button class="cart-clear-btn" onclick="clearCart()">🗑️ إفراغ السلة</button>
   </div>
@@ -1117,16 +1120,22 @@ function prodCardHTML(p) {
         <span class="stars">★★★★★</span>
         <span class="rval">${p.rating} (${p.reviews})</span>
       </div>
-      <div class="pcard-footer" style="flex-direction:column;align-items:stretch;gap:8px">
-        <div style="display:flex;align-items:center;gap:4px">
-          ${p.oldPrice ? `<span class="price-old">${fmtPrice(p.oldPrice)}</span>` : ''}
-          <span class="price-main">${fmtPrice(p.price)}</span>
-        </div>
+      <div style="margin-top:6px;display:flex;align-items:center;gap:4px">
+        ${p.oldPrice ? `<span class="price-old">${fmtPrice(p.oldPrice)}</span>` : ''}
+        <span class="price-main">${fmtPrice(p.price)}</span>
+      </div>
+      <div class="pcard-actions">
+        <button class="order-now-btn"
+          onclick="event.stopPropagation();orderNow(${p.id})"
+          title="اطلب الآن">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="white" stroke-width="2.5"><path d="M4 4h2l1.6 9.6a2 2 0 002 1.6h8a2 2 0 002-2L21 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+          اطلب الآن
+        </button>
         <button class="atc-btn" id="atc-${p.id}"
           onclick="event.stopPropagation();addToCart(${p.id})"
           title="إضافة إلى السلة">
-          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="white" stroke-width="2.3"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          إضافة إلى السلة
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          إضافة إلى السلة 🛒
         </button>
       </div>
     </div>
@@ -1361,11 +1370,34 @@ function closeCartDrawer() {
   document.body.style.overflow = '';
 }
 
+function orderNow(prodId) {
+  const p = ALL_PRODS.find(x => x.id === prodId);
+  if (!p) return;
+  setOrderProduct(p.name, p.img);
+  if (!document.getElementById('viewCats').classList.contains('active')) {
+    showCats();
+    setTimeout(() => {
+      document.getElementById('order-form').scrollIntoView({behavior:'smooth',block:'start'});
+      setTimeout(() => document.getElementById('orderName').focus({preventScroll:true}), 600);
+    }, 350);
+  } else {
+    document.getElementById('order-form').scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(() => document.getElementById('orderName').focus({preventScroll:true}), 600);
+  }
+}
+
 function cartCheckout() {
   closeCartDrawer();
-  const target = document.getElementById('order-form');
-  target.scrollIntoView({behavior:'smooth',block:'start'});
-  setTimeout(() => document.getElementById('orderName').focus({preventScroll:true}), 600);
+  if (!document.getElementById('viewCats').classList.contains('active')) {
+    showCats();
+    setTimeout(() => {
+      document.getElementById('order-form').scrollIntoView({behavior:'smooth',block:'start'});
+      setTimeout(() => document.getElementById('orderName').focus({preventScroll:true}), 600);
+    }, 350);
+  } else {
+    document.getElementById('order-form').scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(() => document.getElementById('orderName').focus({preventScroll:true}), 600);
+  }
 }
 
 document.addEventListener('keydown', e => {
