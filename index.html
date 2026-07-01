@@ -756,6 +756,10 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
           <span>واتساب — متاح 24/7</span>
         </div>
         <div class="ft-contact-row">
+          <span class="ft-icon">📧</span>
+          <a href="mailto:Youcefpsg0808@gmail.com" style="color:rgba(255,255,255,.6);word-break:break-all;transition:var(--t)" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Youcefpsg0808@gmail.com</a>
+        </div>
+        <div class="ft-contact-row">
           <span class="ft-icon">🚚</span>
           <span>توصيل لجميع ولايات الجزائر</span>
         </div>
@@ -1218,7 +1222,7 @@ function openProd(id) {
   const b = document.getElementById('mBadge');
   b.textContent = p.badge; b.className = `badge ${p.badgeClass}`;
 
-  const waMsg = `🛒 طلب جديد من YouMed\n\n📦 المنتج: ${p.name}\n💰 السعر: ${fmtPrice(p.price)}\n🖼️ صورة المنتج: ${p.img}\n🔗 رابط الموقع: ${window.location.href}`;
+  const waMsg = `🛒 طلب جديد من YouMed\n\n📦 المنتج: ${p.name}\n💰 السعر: ${fmtPrice(p.price)}\n🖼️ صورة المنتج: ${p.img}\n🔗 رابط الموقع: ${window.location.href}\n📧 البريد: Youcefpsg0808@gmail.com`;
   document.getElementById('mWaLink').href =
     `https://api.whatsapp.com/send?phone=${WA_PHONE}&text=${encodeURIComponent(waMsg)}`;
 
@@ -1560,7 +1564,8 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
   msg += `📍 *الولاية:* ${custState}\n`;
   msg += `🏙️ *البلدية:* ${custCity}\n`;
   msg += `━━━━━━━━━━━━━━━━━\n`;
-  msg += `🔗 *رابط الموقع:* ${window.location.href}`;
+  msg += `🔗 *رابط الموقع:* ${window.location.href}\n`;
+  msg += `📧 *البريد الإلكتروني:* Youcefpsg0808@gmail.com`;
 
   window.open(`https://api.whatsapp.com/send?phone=${WA_PHONE}&text=${encodeURIComponent(msg)}`, '_blank');
 
