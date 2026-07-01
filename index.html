@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
 <title>YouMed – متجرك الطبي الموثوق</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -55,26 +55,59 @@ button{font-family:'Tajawal',sans-serif;cursor:pointer}
 .logo-name em { font-style: normal; }
 
 /* STRIP */
-.strip{background:#003f8a;padding:8px 24px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.8)}
+.strip{background:#003f8a;padding:8px 24px;padding-top:calc(8px + env(safe-area-inset-top, 0px));display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.8)}
 .strip-wa{display:flex;align-items:center;gap:6px;background:var(--teal);color:#fff;padding:4px 14px;border-radius:50px;font-weight:700;font-size:12px;transition:var(--t)}
 .strip-wa:hover{background:var(--teal-d)}
 
-/* HEADER */
-header{position:sticky;top:0;z-index:500;background:#fff;border-bottom:1.5px solid var(--gray-200);box-shadow:0 2px 12px rgba(0,40,100,.06)}
-.hdr{display:flex;align-items:center;gap:20px;padding:13px 28px;max-width:1440px;margin:0 auto}
-.logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
+/* HEADER — safe-area + two-row mobile layout */
+header{
+  position:sticky;top:0;z-index:500;
+  background:#fff;
+  border-bottom:1.5px solid var(--gray-200);
+  box-shadow:0 2px 12px rgba(0,40,100,.06);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.hdr{
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px;
+  padding:11px 28px;max-width:1440px;margin:0 auto;
+}
+/* Logo always on the left, shrinks last */
+.logo{display:flex;align-items:center;gap:11px;flex-shrink:0;text-decoration:none}
 .logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,var(--blue),var(--teal));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,87,184,.3)}
 .logo-sub{font-size:10px;color:var(--gray-400);font-weight:600;margin-top:-3px;display:block}
-.search-wrap{flex:1;position:relative;max-width:640px;margin:0 auto}
-.search-input{width:100%;padding:11px 50px 11px 18px;border:1.5px solid var(--gray-200);border-radius:50px;font-family:'Tajawal',sans-serif;font-size:14px;outline:none;background:#f7f9fc;transition:var(--t)}
+
+/* Search — grows to fill available space */
+.search-wrap{flex:1;min-width:160px;position:relative;max-width:640px}
+.search-input{
+  width:100%;padding:10px 46px 10px 14px;
+  border:1.5px solid var(--gray-200);border-radius:50px;
+  font-family:'Tajawal',sans-serif;font-size:14px;outline:none;
+  background:#f7f9fc;transition:var(--t);
+}
 .search-input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(0,87,184,.07)}
-.search-btn{position:absolute;left:8px;top:50%;transform:translateY(-50%);background:var(--blue);border:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--t);cursor:pointer}
+.search-btn{
+  position:absolute;left:7px;top:50%;transform:translateY(-50%);
+  background:var(--blue);border:none;
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--t);cursor:pointer;flex-shrink:0;
+  z-index:2;
+}
 .search-btn:hover{background:var(--blue-d)}
-.hdr-btn{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:50px;font-size:13.5px;font-weight:800;border:none;transition:var(--t)}
+
+/* Action buttons */
+.hdr-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 18px;border-radius:50px;
+  font-size:13px;font-weight:800;border:none;
+  white-space:nowrap;transition:var(--t);flex-shrink:0;
+}
 .hdr-btn-teal{background:var(--teal);color:#fff}
 .hdr-btn-teal:hover{background:var(--teal-d);transform:translateY(-1px)}
 .hdr-btn-blue{background:var(--blue);color:#fff}
 .hdr-btn-blue:hover{background:var(--blue-d);transform:translateY(-1px)}
+/* Text label inside buttons — hidden on tiny screens */
+.hdr-btn-label{display:inline}
 
 /* ── VIEW SYSTEM ── */
 .view{display:none}
@@ -293,10 +326,84 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
 
 /* ── RESPONSIVE ── */
-@media(max-width:1200px){.cats-grid{grid-template-columns:repeat(3,1fr)}.prods-grid{grid-template-columns:repeat(4,1fr)}.footer-grid{grid-template-columns:1fr 1fr;gap:28px}}
-@media(max-width:900px){.cats-grid{grid-template-columns:repeat(2,1fr)}.prods-grid{grid-template-columns:repeat(3,1fr)}.modal-main{grid-template-columns:1fr}.modal-info{padding-right:0;padding-top:16px}.rel-grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr}.hero-stats{flex-direction:row;flex-wrap:wrap}.order-card{padding:28px 24px}}
-@media(max-width:620px){.cats-grid{grid-template-columns:repeat(2,1fr)}.prods-grid{grid-template-columns:repeat(2,1fr)}.strip{display:none}.hero{padding:30px 16px}.hero-btns{flex-direction:column;align-items:flex-start}.footer-grid{grid-template-columns:1fr}.cats-page,.prods-page{padding:24px 16px}.hdr{padding:10px 16px;gap:10px}.order-section{padding:44px 16px}.order-card{padding:24px 18px}.order-form-grid{grid-template-columns:1fr}}
-@media(max-width:420px){.prods-grid{grid-template-columns:1fr}.cats-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:1200px){
+  .cats-grid{grid-template-columns:repeat(3,1fr)}
+  .prods-grid{grid-template-columns:repeat(4,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:900px){
+  .cats-grid{grid-template-columns:repeat(2,1fr)}
+  .prods-grid{grid-template-columns:repeat(3,1fr)}
+  .modal-main{grid-template-columns:1fr}
+  .modal-info{padding-right:0;padding-top:16px}
+  .rel-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-stats{flex-direction:row;flex-wrap:wrap}
+  .order-card{padding:28px 24px}
+}
+
+/* ── TABLET 620-768: compact header ── */
+@media(max-width:768px){
+  .hdr{padding:10px 16px;gap:8px}
+  .hdr-btn{padding:8px 14px;font-size:12px}
+}
+
+/* ── MOBILE ≤620px: two-row header ── */
+@media(max-width:620px){
+  /* Strip */
+  .strip{display:none}
+
+  /* Header: Row-1 = logo + action-btns | Row-2 = search full width */
+  header{padding-top:env(safe-area-inset-top,0px)}
+  .hdr{
+    padding:8px 14px;
+    gap:8px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .logo{flex:1;min-width:0}
+  .logo-sub{display:none}
+
+  /* Buttons: icon only, compact circle */
+  .hdr-btn{
+    padding:9px;
+    border-radius:50%;
+    min-width:38px;
+    min-height:38px;
+    justify-content:center;
+  }
+  .hdr-btn-label{display:none}
+
+  /* Search: pushed to its own full-width row via order */
+  .search-wrap{
+    order:10;        /* renders AFTER logo & buttons */
+    flex:0 0 100%;   /* full width */
+    max-width:100%;
+    margin:0;
+  }
+  .search-input{font-size:15px;padding:11px 48px 11px 14px}
+  .search-btn{width:36px;height:36px;left:7px}
+
+  /* Hero */
+  .hero{padding:28px 16px 36px}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+
+  /* Sections */
+  .cats-grid{grid-template-columns:repeat(2,1fr)}
+  .prods-grid{grid-template-columns:repeat(2,1fr)}
+  .cats-page,.prods-page{padding:20px 14px}
+  .footer-grid{grid-template-columns:1fr}
+  .order-section{padding:40px 16px}
+  .order-card{padding:22px 16px}
+  .order-form-grid{grid-template-columns:1fr}
+}
+
+/* ── TINY PHONES ≤420px ── */
+@media(max-width:420px){
+  .prods-grid{grid-template-columns:1fr}
+  .cats-grid{grid-template-columns:1fr 1fr}
+  .hdr-btn{min-width:36px;min-height:36px;padding:8px}
+}
 </style>
 </head>
 <body>
@@ -328,13 +435,13 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
       </button>
     </div>
-    <a href="#order-form" class="hdr-btn hdr-btn-blue">
+    <a href="#order-form" class="hdr-btn hdr-btn-blue" onclick="smoothToOrderForm(event)">
       <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="white" stroke-width="2.3"><path d="M4 4h2l1.6 9.6a2 2 0 002 1.6h8a2 2 0 002-2L21 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
-      اطلب الآن
+      <span class="hdr-btn-label">اطلب الآن</span>
     </a>
     <a href="https://wa.me/[ضع_رقم_هاتفك_هنا]" target="_blank" class="hdr-btn hdr-btn-teal">
       <svg viewBox="0 0 24 24" width="15" height="15" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.874L0 24l6.305-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.032-1.393l-.36-.214-3.734.979.996-3.643-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
-      واتساب
+      <span class="hdr-btn-label">واتساب</span>
     </a>
   </div>
 </header>
@@ -1050,62 +1157,104 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
 });
 
 /* ═══════════════════════════════════════════
-   LIVE SEARCH — بحث فعلي بالكتابة أو الضغط على الزر
-   يصفّي المنتجات ويظهر النتائج مباشرة
+   SMOOTH SCROLL TO ORDER FORM (header button)
+═══════════════════════════════════════════ */
+function smoothToOrderForm(e) {
+  e.preventDefault();
+  const target = document.getElementById('order-form');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      const nameInput = document.getElementById('orderName');
+      if (nameInput) nameInput.focus({ preventScroll: true });
+    }, 600);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   LIVE SEARCH — يعمل بضغطة الزر أو Enter
+   ويُصفّي لحظياً أثناء الكتابة في صفحة المنتجات
 ═══════════════════════════════════════════ */
 function runSearch() {
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  if (!q) return;
+  const inputEl = document.getElementById('searchInput');
+  const rawQ    = inputEl.value.trim();
+  const q       = rawQ.toLowerCase();
 
+  if (!q) {
+    /* لا نص → أعد للرئيسية */
+    showCats();
+    return;
+  }
+
+  /* تصفية من كل المنتجات */
   const found = ALL_PRODS.filter(p =>
     p.name.toLowerCase().includes(q) ||
-    p.catName.includes(q) ||
-    p.cat.includes(q)
+    p.catName.toLowerCase().includes(q) ||
+    p.cat.toLowerCase().includes(q)
   );
 
-  currentCatId   = '__search__';
+  /* تحديث الحالة */
+  currentCatId    = '__search__';
   currentCatProds = found;
-  currentPage    = 1;
+  currentPage     = 1;
 
-  document.getElementById('bcCurrent').textContent    = `نتائج: "${document.getElementById('searchInput').value}"`;
-  document.getElementById('prodsTitle').innerHTML     = `🔍 نتائج البحث`;
-  document.getElementById('prodsSubtitle').textContent = `${found.length} نتيجة لـ "${document.getElementById('searchInput').value}"`;
-  document.getElementById('prodsSortSel').value       = 'default';
+  /* تحديث رأس صفحة المنتجات */
+  document.getElementById('bcCurrent').textContent     = `نتائج: "${rawQ}"`;
+  document.getElementById('prodsTitle').innerHTML      = `🔍 نتائج البحث`;
+  document.getElementById('prodsSubtitle').textContent = found.length
+    ? `${found.length} نتيجة لـ "${rawQ}"`
+    : `لا توجد نتائج لـ "${rawQ}"`;
+  document.getElementById('prodsSortSel').value        = 'default';
 
   renderProds(found);
   showView('viewProds');
+
+  /* إخفاء لوحة المفاتيح في الموبايل */
+  inputEl.blur();
 }
 
-/* زر البحث */
-document.getElementById('searchBtn').addEventListener('click', runSearch);
-
-/* مفتاح Enter في حقل البحث */
-document.getElementById('searchInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') runSearch();
+/* ── زر البحث (click) ── */
+document.getElementById('searchBtn').addEventListener('click', function (e) {
+  e.preventDefault();
+  runSearch();
 });
 
-/* تصفية لحظية أثناء الكتابة — تعمل فقط عند وجود نص */
+/* ── Enter في حقل البحث ── */
+document.getElementById('searchInput').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    runSearch();
+  }
+});
+
+/* ── تصفية لحظية أثناء الكتابة (فقط في صفحة المنتجات) ── */
 document.getElementById('searchInput').addEventListener('input', function () {
   const q = this.value.trim().toLowerCase();
-  if (!q) return; /* لا شيء عند مسح النص */
 
-  /* إذا كنا في صفحة المنتجات بالفعل، نصفي لحظياً */
-  if (document.getElementById('viewProds').classList.contains('active')) {
-    const basePool = currentCatId === '__search__' ? ALL_PRODS : ALL_PRODS.filter(p => p.cat === currentCatId);
-    const filtered = ALL_PRODS.filter(p =>
-      p.name.toLowerCase().includes(q) ||
-      p.catName.includes(q) ||
-      p.cat.includes(q)
-    );
-    const savedCatProds = currentCatProds;
-    currentCatProds = filtered;
-    const savedPage   = currentPage;
-    currentPage       = 1;
-    renderProds(filtered);
-    /* نعيد للأصل عند مسح النص */
-    currentCatProds = savedCatProds;
-    currentPage     = savedPage;
+  const prodsView = document.getElementById('viewProds');
+  if (!prodsView.classList.contains('active')) return;
+
+  if (!q) {
+    /* مسح الحقل → أعد عرض الفئة/البحث الأصلي */
+    renderProds(currentCatProds);
+    return;
   }
+
+  /* تصفية لحظية من كل المنتجات */
+  const filtered = ALL_PRODS.filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    p.catName.toLowerCase().includes(q) ||
+    p.cat.toLowerCase().includes(q)
+  );
+
+  /* نعرض النتائج مؤقتاً دون تغيير currentCatProds */
+  const savedProds = currentCatProds;
+  const savedPage  = currentPage;
+  currentCatProds  = filtered;
+  currentPage      = 1;
+  renderProds(filtered);
+  currentCatProds  = savedProds;
+  currentPage      = savedPage;
 });
 
 /* ═══════════════════════════════════════════
