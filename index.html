@@ -30,6 +30,30 @@ button{font-family:'Tajawal',sans-serif;cursor:pointer}
   --t:all .22s cubic-bezier(.4,0,.2,1);
 }
 
+/* ══════════════════════════════════════
+   ANIMATED BRANDING — You Med logo
+══════════════════════════════════════ */
+@keyframes logoGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes logoPulseGlow {
+  0%,100% { text-shadow: 0 0 8px rgba(0,87,184,0), 0 0 0px rgba(0,168,120,0); }
+  50%      { text-shadow: 0 0 18px rgba(0,87,184,.55), 0 0 32px rgba(0,168,120,.35); }
+}
+.logo-name {
+  font-size: 22px;
+  font-weight: 900;
+  background: linear-gradient(270deg, #0057b8, #00a878, #00d4a0, #0057b8);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: logoGradient 4s ease infinite, logoPulseGlow 4s ease infinite;
+}
+.logo-name em { font-style: normal; }
+
 /* STRIP */
 .strip{background:#003f8a;padding:8px 24px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.8)}
 .strip-wa{display:flex;align-items:center;gap:6px;background:var(--teal);color:#fff;padding:4px 14px;border-radius:50px;font-weight:700;font-size:12px;transition:var(--t)}
@@ -40,13 +64,11 @@ header{position:sticky;top:0;z-index:500;background:#fff;border-bottom:1.5px sol
 .hdr{display:flex;align-items:center;gap:20px;padding:13px 28px;max-width:1440px;margin:0 auto}
 .logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
 .logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,var(--blue),var(--teal));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,87,184,.3)}
-.logo-name{font-size:22px;font-weight:900;color:var(--blue)}
-.logo-name em{color:var(--teal);font-style:normal}
 .logo-sub{font-size:10px;color:var(--gray-400);font-weight:600;margin-top:-3px;display:block}
 .search-wrap{flex:1;position:relative;max-width:640px;margin:0 auto}
 .search-input{width:100%;padding:11px 50px 11px 18px;border:1.5px solid var(--gray-200);border-radius:50px;font-family:'Tajawal',sans-serif;font-size:14px;outline:none;background:#f7f9fc;transition:var(--t)}
 .search-input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(0,87,184,.07)}
-.search-btn{position:absolute;left:8px;top:50%;transform:translateY(-50%);background:var(--blue);border:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+.search-btn{position:absolute;left:8px;top:50%;transform:translateY(-50%);background:var(--blue);border:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--t);cursor:pointer}
 .search-btn:hover{background:var(--blue-d)}
 .hdr-btn{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:50px;font-size:13.5px;font-weight:800;border:none;transition:var(--t)}
 .hdr-btn-teal{background:var(--teal);color:#fff}
@@ -151,6 +173,9 @@ header{position:sticky;top:0;z-index:500;background:#fff;border-bottom:1.5px sol
 .price-sar{font-size:10px;color:var(--gray-400)}
 .add-btn{width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;border:none;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:var(--t);box-shadow:0 3px 8px rgba(0,87,184,.28)}
 .add-btn:hover{background:var(--blue-d);transform:scale(1.12)}
+/* Order-Now button in product card (text version) */
+.order-now-btn{flex:1;background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;border:none;border-radius:50px;padding:7px 12px;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:5px;transition:var(--t);box-shadow:0 3px 8px rgba(0,87,184,.22)}
+.order-now-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,87,184,.32)}
 
 .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:50px;font-size:10px;font-weight:800;line-height:1.4}
 .b-blue{background:var(--blue-l);color:var(--blue)}
@@ -233,8 +258,9 @@ header{position:sticky;top:0;z-index:500;background:#fff;border-bottom:1.5px sol
 .order-submit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,168,120,.44)}
 .order-submit-btn:active{transform:translateY(0)}
 .order-note{text-align:center;font-size:12px;color:var(--gray-400);margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px}
-.order-selected-product{display:none;align-items:center;gap:10px;background:var(--blue-l);color:var(--blue-d);border-radius:var(--r);padding:10px 14px;font-size:12.5px;font-weight:700;margin-bottom:18px}
+.order-selected-product{display:none;align-items:center;gap:10px;background:var(--blue-l);color:var(--blue-d);border-radius:var(--r);padding:10px 14px;font-size:12.5px;font-weight:700;margin-bottom:18px;flex-wrap:wrap}
 .order-selected-product.show{display:flex}
+.order-selected-product img{width:48px;height:48px;object-fit:cover;border-radius:8px;border:1.5px solid var(--blue-l);flex-shrink:0}
 .order-selected-product button{margin-right:auto;margin-left:0;background:none;border:none;color:var(--blue);font-size:16px;line-height:1;cursor:pointer}
 .order-success{display:none;text-align:center;padding:22px;background:var(--teal-l);border-radius:var(--r-lg);color:var(--teal-d);font-weight:800;margin-top:18px;font-size:14px}
 .order-success.show{display:block;animation:fadeIn .3s ease}
@@ -278,7 +304,7 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 <!-- TOP STRIP -->
 <div class="strip">
   <span>🚚 توصيل مجاني للطلبات فوق 300 ريال &nbsp;|&nbsp; ✅ منتجات معتمدة هيئة الغذاء والدواء &nbsp;|&nbsp; 📦 +1000 منتج طبي</span>
-  <a href="https://wa.me/966556482873" target="_blank" class="strip-wa">
+  <a href="https://wa.me/[ضع_رقم_هاتفك_هنا]" target="_blank" class="strip-wa">
     <svg viewBox="0 0 24 24" width="12" height="12" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.874L0 24l6.305-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.032-1.393l-.36-.214-3.734.979.996-3.643-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
     تواصل الآن
   </a>
@@ -298,7 +324,7 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
     </a>
     <div class="search-wrap">
       <input class="search-input" id="searchInput" type="text" placeholder="ابحث عن منتج أو فئة..."/>
-      <button class="search-btn">
+      <button class="search-btn" id="searchBtn" type="button" title="بحث">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
       </button>
     </div>
@@ -306,7 +332,7 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
       <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="white" stroke-width="2.3"><path d="M4 4h2l1.6 9.6a2 2 0 002 1.6h8a2 2 0 002-2L21 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
       اطلب الآن
     </a>
-    <a href="https://wa.me/966556482873" target="_blank" class="hdr-btn hdr-btn-teal">
+    <a href="https://wa.me/[ضع_رقم_هاتفك_هنا]" target="_blank" class="hdr-btn hdr-btn-teal">
       <svg viewBox="0 0 24 24" width="15" height="15" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.874L0 24l6.305-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.032-1.393l-.36-.214-3.734.979.996-3.643-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
       واتساب
     </a>
@@ -334,7 +360,7 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.3"><path d="M4 4h2l1.6 9.6a2 2 0 002 1.6h8a2 2 0 002-2L21 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
             اطلب الآن
           </a>
-          <a href="https://wa.me/966556482873" target="_blank" class="btn-ho">
+          <a href="https://wa.me/[ضع_رقم_هاتفك_هنا]" target="_blank" class="btn-ho">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.874L0 24l6.305-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.032-1.393l-.36-.214-3.734.979.996-3.643-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
             تواصل معنا
           </a>
@@ -450,7 +476,9 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
       <p>فريقنا سيتواصل معك في أقرب وقت لتأكيد الطلب والتوصيل حتى باب منزلك في جميع مناطق المملكة</p>
     </div>
     <div class="order-card">
+      <!-- Product preview shown when a product is selected -->
       <div class="order-selected-product" id="orderSelectedProduct">
+        <img id="orderSelectedProductImg" src="" alt="صورة المنتج"/>
         <span id="orderSelectedProductText"></span>
         <button type="button" onclick="clearOrderProduct()" title="إزالة">✕</button>
       </div>
@@ -490,7 +518,7 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
         </div>
         <button type="submit" class="order-submit-btn">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" stroke-width="2.4"><path d="M9 12l2 2 4-4M12 21c4.97-3 8-7.03 8-11.5A8 8 0 004 9.5C4 13.97 7.03 18 12 21z"/></svg>
-          تأكيد الطلب الآن
+          تأكيد الطلب عبر واتساب
         </button>
         <div class="order-note">
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
@@ -507,7 +535,7 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 <!-- FLOATING WA -->
 <div class="wa-float">
   <div class="wa-label">⚡ رد فوري</div>
-  <a href="https://wa.me/966556482873" target="_blank" class="wa-btn">
+  <a href="https://wa.me/[ضع_رقم_هاتفك_هنا]" target="_blank" class="wa-btn">
     <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.874L0 24l6.305-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.032-1.393l-.36-.214-3.734.979.996-3.643-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
   </a>
 </div>
@@ -518,9 +546,9 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
     <div>
       <div class="ft-logo-name">You<em>Med</em></div>
       <p class="ft-desc">متجرك الطبي الموثوق — أكثر من 1000 منتج طبي معتمد بأسعار تنافسية وتوصيل سريع لجميع مناطق المملكة.</p>
-      <a href="https://wa.me/966556482873" target="_blank" class="ft-wa">
+      <a href="https://wa.me/[ضع_رقم_هاتفك_هنا]" target="_blank" class="ft-wa">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.874L0 24l6.305-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.032-1.393l-.36-.214-3.734.979.996-3.643-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
-        0556482873
+        تواصل معنا واتساب
       </a>
     </div>
     <div class="ft-col">
@@ -533,16 +561,21 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
     </div>
     <div class="ft-col">
       <h4>تواصل معنا</h4>
-      <div class="ft-contact-row"><span class="ft-icon">📱</span><a href="https://wa.me/966556482873" style="color:rgba(255,255,255,.7)">0556482873</a></div>
+      <div class="ft-contact-row"><span class="ft-icon">📱</span><a href="https://wa.me/[ضع_رقم_هاتفك_هنا]" style="color:rgba(255,255,255,.7)">واتساب</a></div>
       <div class="ft-contact-row"><span class="ft-icon">🕐</span>متاح 24 ساعة / 7 أيام</div>
       <div class="ft-contact-row"><span class="ft-icon">📍</span>المملكة العربية السعودية</div>
       <div class="ft-contact-row"><span class="ft-icon">🚚</span>توصيل لجميع المناطق</div>
     </div>
   </div>
-  <div class="footer-bottom"><span class="footer-copy">© 2024 YouMed — جميع الحقوق محفوظة | متجر طبي معتمد SFDA</span></div>
+  <div class="footer-bottom"><span class="footer-copy">© 2025 YouMed — جميع الحقوق محفوظة | متجر طبي معتمد SFDA</span></div>
 </footer>
 
 <script>
+/* ═══════════════════════════════════════════
+   WHATSAPP PHONE — غيّر هذا الرقم فقط
+═══════════════════════════════════════════ */
+const WA_PHONE = '[ضع_رقم_هاتفك_هنا]'; // مثال: 966501234567
+
 /* ═══════════════════════════════════════════
    DATA
 ═══════════════════════════════════════════ */
@@ -559,7 +592,7 @@ const CATS = [
 
 const BG_CLASSES = ['cat-banner-blue','cat-banner-teal','cat-banner-gold','cat-banner-rose','cat-banner-purple','cat-banner-sky','cat-banner-mint','cat-banner-peach'];
 
-/* Real product photography per category — stable stock CDN links */
+/* صور عالية الجودة لكل فئة */
 const IMAGES_BY_CAT = {
   قياس: [
     'https://images.pexels.com/photos/8088866/pexels-photo-8088866.jpeg?auto=compress&cs=tinysrgb&w=600',
@@ -728,7 +761,6 @@ function buildCatsGrid() {
       </div>
     </div>`).join('');
 
-  // Footer cats
   document.getElementById('footerCatList').innerHTML =
     CATS.slice(0,6).map(c => `<li><a href="#" onclick="openCat('${c.id}')">${c.name}</a></li>`).join('');
 }
@@ -743,7 +775,6 @@ function openCat(catId) {
   currentCatProds = ALL_PRODS.filter(p => p.cat === catId);
 
   document.getElementById('bcCurrent').textContent = cat.name;
-  document.getElementById('prodsTitle').textContent = cat.name;
   document.getElementById('prodsTitle').innerHTML = `${cat.emoji} ${cat.name}`;
   document.getElementById('prodsSubtitle').textContent = cat.desc;
   document.getElementById('prodsSortSel').value = 'default';
@@ -773,7 +804,13 @@ function renderProds(prods) {
   renderPagination(totalPages, prods);
 }
 
+/* ═══════════════════════════════════════════
+   PRODUCT CARD HTML
+   — يحمل اسم المنتج ورابط صورته لزر "اطلب الآن"
+═══════════════════════════════════════════ */
 function prodCardHTML(p) {
+  const safeImg = p.img.replace(/'/g, "\\'");
+  const safeName = p.name.replace(/'/g, "\\'");
   return `<div class="pcard" onclick="openProd(${p.id})">
     <div class="pcard-img">
       <img src="${p.img}" alt="${p.name}" loading="lazy"/>
@@ -792,7 +829,9 @@ function prodCardHTML(p) {
           ${p.oldPrice ? `<span class="price-old">${p.oldPrice} ر.س</span>` : ''}
           <span class="price-main">${p.price}</span><span class="price-sar"> ر.س</span>
         </div>
-        <button class="add-btn" onclick="event.stopPropagation();goToOrderForm('${p.name.replace(/'/g,"\\'")}',${p.price})" title="اطلب الآن">+</button>
+        <button class="add-btn"
+          onclick="event.stopPropagation();goToOrderForm('${safeName}',${p.price},'${safeImg}')"
+          title="اطلب الآن">+</button>
       </div>
     </div>
   </div>`;
@@ -814,7 +853,7 @@ function sortProds() {
 function renderPagination(total, prods) {
   const pg = document.getElementById('prodsPagination');
   if (total <= 1) { pg.innerHTML = ''; return; }
-  let html = `<button class="pg-btn" onclick="goPage(${currentPage-1},prods)" ${currentPage===1?'disabled':''}>‹</button>`;
+  let html = `<button class="pg-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button>`;
   pageRange(currentPage, total).forEach(p => {
     if (p === '...') html += `<span class="pg-dots">…</span>`;
     else html += `<button class="pg-btn${p===currentPage?' active':''}" onclick="goPage(${p})">${p}</button>`;
@@ -876,8 +915,11 @@ function openProd(id) {
   document.getElementById('mPrice').textContent = `${p.price} ر.س`;
   const b = document.getElementById('mBadge');
   b.textContent = p.badge; b.className = `badge ${p.badgeClass}`;
+
+  /* واتساب سريع من المودال — يتضمن اسم المنتج، صورته، والسعر */
+  const waMsg = `🛒 طلب جديد من YouMed\n\n📦 المنتج: ${p.name}\n💰 السعر: ${p.price} ر.س\n🖼️ صورة المنتج: ${p.img}\n🔗 رابط الموقع: ${window.location.href}`;
   document.getElementById('mWaLink').href =
-    `https://wa.me/966556482873?text=${encodeURIComponent('أريد طلب: '+p.name+' — السعر: '+p.price+' ر.س')}`;
+    `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(waMsg)}`;
 
   /* Related: 4 from same cat */
   const related = ALL_PRODS.filter(x => x.cat===p.cat && x.id!==id).slice(0,4);
@@ -901,14 +943,12 @@ function closeModal() {
 function closeBg(e) { if(e.target===document.getElementById('modalOverlay')) closeModal(); }
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
-function waQuick(name, price) {
-  window.open(`https://wa.me/966556482873?text=${encodeURIComponent('أريد طلب: '+name+' — السعر: '+price+' ر.س')}`, '_blank');
-}
-
-/* Order button under each product card → anchors straight to the order form,
-   pre-fills the chosen product, then scrolls smoothly into view */
-function goToOrderForm(name, price) {
-  setOrderProduct(`${name} — ${price} ر.س`);
+/* ═══════════════════════════════════════════
+   GO TO ORDER FORM
+   — يحفظ اسم المنتج + رابط صورته → سكرول سلس
+═══════════════════════════════════════════ */
+function goToOrderForm(name, price, imgUrl) {
+  setOrderProduct(`${name} — ${price} ر.س`, imgUrl || '');
   const target = document.getElementById('order-form');
   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   setTimeout(() => {
@@ -918,34 +958,55 @@ function goToOrderForm(name, price) {
 }
 
 /* ═══════════════════════════════════════════
-   ORDER FORM (name, phone, state, city)
+   ORDER FORM STATE
 ═══════════════════════════════════════════ */
 let _orderSelectedProdName = null;
+let _orderSelectedProdImg  = null;
 
+/* زر نموذج الطلب داخل المودال */
 document.getElementById('mOrderFormBtn').addEventListener('click', () => {
-  if (_currentModalProd) setOrderProduct(`${_currentModalProd.name} — ${_currentModalProd.price} ر.س`);
+  if (_currentModalProd) {
+    setOrderProduct(
+      `${_currentModalProd.name} — ${_currentModalProd.price} ر.س`,
+      _currentModalProd.img
+    );
+  }
   closeModal();
   document.getElementById('order-form').scrollIntoView({behavior:'smooth', block:'start'});
-  document.getElementById('orderName').focus({preventScroll:true});
+  setTimeout(() => document.getElementById('orderName').focus({preventScroll:true}), 500);
 });
 
-function setOrderProduct(label) {
+function setOrderProduct(label, imgUrl) {
   _orderSelectedProdName = label;
+  _orderSelectedProdImg  = imgUrl || '';
   const box = document.getElementById('orderSelectedProduct');
   document.getElementById('orderSelectedProductText').textContent = `🛒 المنتج المختار: ${label}`;
+  const imgEl = document.getElementById('orderSelectedProductImg');
+  if (imgUrl) {
+    imgEl.src = imgUrl;
+    imgEl.style.display = 'block';
+  } else {
+    imgEl.style.display = 'none';
+  }
   box.classList.add('show');
 }
+
 function clearOrderProduct() {
   _orderSelectedProdName = null;
+  _orderSelectedProdImg  = null;
   document.getElementById('orderSelectedProduct').classList.remove('show');
 }
 
+/* ═══════════════════════════════════════════
+   ORDER FORM SUBMIT → WHATSAPP
+   يجمع كل البيانات ويرسلها مرتبة للواتساب
+═══════════════════════════════════════════ */
 document.getElementById('orderForm').addEventListener('submit', function (e) {
   e.preventDefault();
-  const nameEl = document.getElementById('orderName');
+  const nameEl  = document.getElementById('orderName');
   const phoneEl = document.getElementById('orderPhone');
   const stateEl = document.getElementById('orderState');
-  const cityEl = document.getElementById('orderCity');
+  const cityEl  = document.getElementById('orderCity');
 
   const fields = [nameEl, phoneEl, stateEl, cityEl];
   let valid = true;
@@ -957,15 +1018,30 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
   if (phoneDigits.length < 9) { phoneEl.classList.add('err'); valid = false; }
   if (!valid) return;
 
-  const name = nameEl.value.trim();
-  const phone = phoneEl.value.trim();
-  const state = stateEl.value;
-  const city = cityEl.value.trim();
+  const custName  = nameEl.value.trim();
+  const custPhone = phoneEl.value.trim();
+  const custState = stateEl.value;
+  const custCity  = cityEl.value.trim();
+  const siteURL   = window.location.href;
 
-  let msg = `طلب جديد من موقع YouMed\n\nالاسم: ${name}\nرقم الهاتف: ${phone}\nالمنطقة: ${state}\nالبلدية/المدينة: ${city}`;
-  if (_orderSelectedProdName) msg += `\nالمنتج: ${_orderSelectedProdName}`;
+  /* بناء رسالة الواتساب المرتبة */
+  let msg = `🛒 *طلب جديد من موقع YouMed*\n`;
+  msg += `━━━━━━━━━━━━━━━━━\n`;
+  if (_orderSelectedProdName) {
+    msg += `📦 *المنتج:* ${_orderSelectedProdName}\n`;
+  }
+  if (_orderSelectedProdImg) {
+    msg += `🖼️ *صورة المنتج:* ${_orderSelectedProdImg}\n`;
+  }
+  msg += `━━━━━━━━━━━━━━━━━\n`;
+  msg += `👤 *الاسم:* ${custName}\n`;
+  msg += `📱 *الهاتف:* ${custPhone}\n`;
+  msg += `📍 *الولاية / المنطقة:* ${custState}\n`;
+  msg += `🏙️ *البلدية / المدينة:* ${custCity}\n`;
+  msg += `━━━━━━━━━━━━━━━━━\n`;
+  msg += `🔗 *رابط الموقع:* ${siteURL}`;
 
-  window.open(`https://wa.me/966556482873?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
 
   document.getElementById('orderSuccess').classList.add('show');
   this.reset();
@@ -974,23 +1050,61 @@ document.getElementById('orderForm').addEventListener('submit', function (e) {
 });
 
 /* ═══════════════════════════════════════════
-   SEARCH (in header, navigates to results)
+   LIVE SEARCH — بحث فعلي بالكتابة أو الضغط على الزر
+   يصفّي المنتجات ويظهر النتائج مباشرة
 ═══════════════════════════════════════════ */
-document.getElementById('searchInput').addEventListener('keydown', e => {
-  if (e.key !== 'Enter') return;
-  const q = e.target.value.trim().toLowerCase();
+function runSearch() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
   if (!q) return;
-  const found = ALL_PRODS.filter(p => p.name.toLowerCase().includes(q) || p.catName.includes(q));
-  if (found.length > 0) {
-    currentCatId = '__search__';
-    currentCatProds = found;
-    currentPage = 1;
-    document.getElementById('bcCurrent').textContent = `نتائج: "${e.target.value}"`;
-    document.getElementById('prodsTitle').innerHTML = `🔍 نتائج البحث`;
-    document.getElementById('prodsSubtitle').textContent = `${found.length} نتيجة لـ "${e.target.value}"`;
-    document.getElementById('prodsSortSel').value = 'default';
-    renderProds(found);
-    showView('viewProds');
+
+  const found = ALL_PRODS.filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    p.catName.includes(q) ||
+    p.cat.includes(q)
+  );
+
+  currentCatId   = '__search__';
+  currentCatProds = found;
+  currentPage    = 1;
+
+  document.getElementById('bcCurrent').textContent    = `نتائج: "${document.getElementById('searchInput').value}"`;
+  document.getElementById('prodsTitle').innerHTML     = `🔍 نتائج البحث`;
+  document.getElementById('prodsSubtitle').textContent = `${found.length} نتيجة لـ "${document.getElementById('searchInput').value}"`;
+  document.getElementById('prodsSortSel').value       = 'default';
+
+  renderProds(found);
+  showView('viewProds');
+}
+
+/* زر البحث */
+document.getElementById('searchBtn').addEventListener('click', runSearch);
+
+/* مفتاح Enter في حقل البحث */
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') runSearch();
+});
+
+/* تصفية لحظية أثناء الكتابة — تعمل فقط عند وجود نص */
+document.getElementById('searchInput').addEventListener('input', function () {
+  const q = this.value.trim().toLowerCase();
+  if (!q) return; /* لا شيء عند مسح النص */
+
+  /* إذا كنا في صفحة المنتجات بالفعل، نصفي لحظياً */
+  if (document.getElementById('viewProds').classList.contains('active')) {
+    const basePool = currentCatId === '__search__' ? ALL_PRODS : ALL_PRODS.filter(p => p.cat === currentCatId);
+    const filtered = ALL_PRODS.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.catName.includes(q) ||
+      p.cat.includes(q)
+    );
+    const savedCatProds = currentCatProds;
+    currentCatProds = filtered;
+    const savedPage   = currentPage;
+    currentPage       = 1;
+    renderProds(filtered);
+    /* نعيد للأصل عند مسح النص */
+    currentCatProds = savedCatProds;
+    currentPage     = savedPage;
   }
 });
 
