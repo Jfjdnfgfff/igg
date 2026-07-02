@@ -531,7 +531,6 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-login-err.show{display:block}
 .adm-login-close{position:absolute;top:14px;left:14px;background:var(--gray-100);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:var(--t)}
 .adm-login-close:hover{background:var(--gray-200)}
-body.adm-no-scroll{overflow:hidden !important;position:fixed !important;left:0 !important;right:0 !important}
 .adm-panel{position:fixed;top:0;right:0;bottom:0;left:0;z-index:9998;background:#f0f4f8;display:none;flex-direction:column;overflow:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 .adm-panel.show{display:flex}
 .adm-header{background:#fff;border-bottom:1.5px solid var(--gray-200);padding:14px 24px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-sm);flex-shrink:0;flex-wrap:wrap}
@@ -656,6 +655,8 @@ body.adm-no-scroll{overflow:hidden !important;position:fixed !important;left:0 !
 </style>
 </head>
 <body>
+
+<div id="mainSite">
 
 <!-- ══════════════════════════════════════
      SUCCESS POPUP (WhatsApp sent)
@@ -1871,8 +1872,7 @@ let _bodyScrollY=0;
 
 function openAdminPanel(){
   _bodyScrollY=window.scrollY||window.pageYOffset;
-  document.body.style.top='-'+_bodyScrollY+'px';
-  document.body.classList.add('adm-no-scroll');
+  document.getElementById('mainSite').style.display='none';
   document.getElementById('adminPanel').classList.add('show');
   const admBody=document.getElementById('adminBody');
   if(admBody) admBody.scrollTop=0;
@@ -1881,8 +1881,7 @@ function openAdminPanel(){
 
 function closeAdminPanel(){
   document.getElementById('adminPanel').classList.remove('show');
-  document.body.classList.remove('adm-no-scroll');
-  document.body.style.top='';
+  document.getElementById('mainSite').style.display='';
   window.scrollTo(0,_bodyScrollY);
 }
 
@@ -2308,6 +2307,8 @@ refreshCartUI();
   </svg>
   إدارة الموقع
 </button>
+
+</div><!-- /#mainSite -->
 
 <!-- ══════════════ ADMIN LOGIN ══════════════ -->
 <div class="adm-login-overlay" id="adminLoginOverlay">
