@@ -499,6 +499,140 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
   .cart-btn{padding:9px;border-radius:50%;min-width:38px;min-height:38px;justify-content:center}
   .cart-btn .hdr-btn-label{display:none}
 }
+
+/* ══════════════════════════════════════
+   ADMIN PANEL — STYLES
+══════════════════════════════════════ */
+/* ADMIN FLOATING BUTTON */
+#adminTapDot{display:none}
+.adm-float-btn{
+  position:fixed;bottom:96px;left:26px;z-index:801;
+  display:flex;align-items:center;gap:8px;
+  background:var(--blue);color:#fff;
+  padding:10px 16px 10px 14px;border-radius:50px;
+  box-shadow:0 4px 18px rgba(0,87,184,.38);
+  font-size:13px;font-weight:800;cursor:pointer;border:none;
+  font-family:'Tajawal',sans-serif;
+  transition:all .22s cubic-bezier(.4,0,.2,1);
+}
+.adm-float-btn:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,87,184,.45)}
+.adm-float-btn svg{flex-shrink:0}
+.adm-login-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,20,60,.75);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center}
+.adm-login-overlay.show{display:flex}
+.adm-login-box{background:#fff;border-radius:24px;padding:40px 36px 36px;width:min(400px,92vw);box-shadow:0 24px 64px rgba(0,20,60,.35);text-align:center;position:relative}
+.adm-login-logo{font-size:36px;margin-bottom:10px}
+.adm-login-title{font-size:21px;font-weight:900;color:var(--gray-900);margin-bottom:4px}
+.adm-login-sub{font-size:13px;color:var(--gray-400);margin-bottom:24px}
+.adm-login-input{width:100%;padding:13px 16px;border:1.5px solid var(--gray-200);border-radius:12px;font-family:'Tajawal',sans-serif;font-size:17px;outline:none;text-align:center;letter-spacing:6px;margin-bottom:14px;transition:var(--t)}
+.adm-login-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,87,184,.1)}
+.adm-login-btn{width:100%;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:var(--t)}
+.adm-login-btn:hover{background:var(--blue-d)}
+.adm-login-err{color:var(--red);font-size:13px;font-weight:700;margin-top:8px;display:none}
+.adm-login-err.show{display:block}
+.adm-login-close{position:absolute;top:14px;left:14px;background:var(--gray-100);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:var(--t)}
+.adm-login-close:hover{background:var(--gray-200)}
+.adm-panel{position:fixed;inset:0;z-index:9998;background:#f0f4f8;display:none;flex-direction:column;overflow:hidden;padding-top:env(safe-area-inset-top,0px)}
+.adm-panel.show{display:flex}
+.adm-header{background:#fff;border-bottom:1.5px solid var(--gray-200);padding:14px 24px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-sm);flex-shrink:0;flex-wrap:wrap}
+.adm-header-logo{font-size:17px;font-weight:900;color:var(--blue)}
+.adm-header-sub{font-size:11px;color:var(--gray-400);font-weight:600}
+.adm-header-space{flex:1}
+.adm-header-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:12.5px;font-weight:800;border:none;cursor:pointer;transition:var(--t)}
+.adm-btn-primary{background:var(--blue);color:#fff}
+.adm-btn-primary:hover{background:var(--blue-d)}
+.adm-btn-success{background:#16a34a;color:#fff}
+.adm-btn-success:hover{background:#15803d}
+.adm-btn-danger{background:var(--red);color:#fff}
+.adm-btn-danger:hover{background:#c0392b}
+.adm-btn-ghost{background:var(--gray-100);color:var(--gray-600);border:1.5px solid var(--gray-200)}
+.adm-btn-ghost:hover{background:var(--gray-200)}
+.adm-body{flex:1;overflow-y:auto;padding:24px}
+.adm-section-title{font-size:16px;font-weight:900;color:var(--gray-900);margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.adm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.adm-stat-card{background:#fff;border-radius:var(--r-lg);padding:18px 20px;border:1.5px solid var(--gray-200);box-shadow:var(--shadow-sm)}
+.adm-stat-val{font-size:26px;font-weight:900;color:var(--blue);margin-bottom:2px}
+.adm-stat-lbl{font-size:12px;color:var(--gray-400);font-weight:700}
+.adm-prod-table{background:#fff;border-radius:var(--r-lg);border:1.5px solid var(--gray-200);overflow:hidden;box-shadow:var(--shadow-sm)}
+.adm-prod-row{display:grid;grid-template-columns:56px 1fr 100px 120px 150px;gap:12px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--gray-200);transition:background .15s}
+.adm-prod-row:last-child{border-bottom:none}
+.adm-prod-row:hover{background:var(--gray-100)}
+.adm-prod-row.adm-row-head{background:var(--blue-l);font-weight:800;font-size:11px;color:var(--blue);border-bottom:2px solid var(--gray-200)}
+.adm-prod-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;border:1.5px solid var(--gray-200)}
+.adm-prod-name{font-size:13px;font-weight:700;color:var(--gray-900);line-height:1.4}
+.adm-prod-cat{font-size:11px;color:var(--gray-400)}
+.adm-prod-price{font-size:14px;font-weight:800;color:var(--blue)}
+.adm-prod-badge-tag{display:inline-flex;padding:3px 10px;border-radius:50px;font-size:10px;font-weight:800;background:var(--blue-l);color:var(--blue)}
+.adm-row-btns{display:flex;gap:5px}
+.adm-edit-btn,.adm-del-btn{padding:5px 11px;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:800;border:none;cursor:pointer;transition:var(--t)}
+.adm-edit-btn{background:var(--blue-l);color:var(--blue)}
+.adm-edit-btn:hover{background:var(--blue);color:#fff}
+.adm-del-btn{background:var(--red-l);color:var(--red)}
+.adm-del-btn:hover{background:var(--red);color:#fff}
+.adm-edit-overlay{position:fixed;inset:0;z-index:10001;background:rgba(0,20,60,.65);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px}
+.adm-edit-overlay.show{display:flex}
+.adm-edit-box{background:#fff;border-radius:20px;width:min(560px,100%);max-height:92vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,20,60,.3)}
+.adm-edit-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px 14px;border-bottom:1.5px solid var(--gray-200);position:sticky;top:0;background:#fff;z-index:2;border-radius:20px 20px 0 0}
+.adm-edit-title{font-size:16px;font-weight:900;color:var(--gray-900)}
+.adm-edit-close{background:var(--gray-100);border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:var(--t)}
+.adm-edit-close:hover{background:var(--gray-200)}
+.adm-edit-body{padding:22px 24px}
+.adm-field{margin-bottom:15px}
+.adm-label{display:block;font-size:12.5px;font-weight:800;color:var(--gray-600);margin-bottom:6px}
+.adm-input,.adm-select,.adm-textarea{width:100%;padding:10px 14px;border:1.5px solid var(--gray-200);border-radius:10px;font-family:'Tajawal',sans-serif;font-size:14px;outline:none;transition:var(--t);background:#fff}
+.adm-textarea{min-height:68px;resize:vertical}
+.adm-input:focus,.adm-select:focus,.adm-textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,87,184,.08)}
+.adm-two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.adm-img-row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.adm-img-preview{width:90px;height:90px;border-radius:10px;object-fit:cover;border:2px solid var(--gray-200);flex-shrink:0;background:var(--gray-100)}
+.adm-img-controls{flex:1;min-width:170px;display:flex;flex-direction:column;gap:8px}
+.adm-file-label{display:inline-flex;align-items:center;gap:7px;background:var(--blue);color:#fff;padding:9px 16px;border-radius:50px;font-size:13px;font-weight:800;cursor:pointer;transition:var(--t);user-select:none}
+.adm-file-label:hover{background:var(--blue-d)}
+.adm-file-label input{display:none}
+.adm-file-note{font-size:11px;color:var(--gray-400);line-height:1.5}
+.adm-img-or{text-align:center;font-size:12px;color:var(--gray-400);font-weight:700;padding:2px 0}
+.adm-edit-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 24px 20px;border-top:1.5px solid var(--gray-200);flex-wrap:wrap}
+.adm-save-btn{padding:11px 28px;background:var(--blue);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:var(--t)}
+.adm-save-btn:hover{background:var(--blue-d)}
+.adm-cancel-btn{padding:11px 20px;background:var(--gray-100);color:var(--gray-600);border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:var(--t)}
+.adm-cancel-btn:hover{background:var(--gray-200)}
+.adm-export-card{background:#fff;border-radius:var(--r-lg);border:1.5px solid var(--gray-200);padding:22px 24px;box-shadow:var(--shadow-sm);margin-top:24px}
+.adm-export-title{font-size:15px;font-weight:900;color:var(--gray-900);margin-bottom:6px}
+.adm-export-desc{font-size:13px;color:var(--gray-400);margin-bottom:16px;line-height:1.75}
+.adm-b64-badge{display:inline-flex;align-items:center;gap:5px;background:#dcfce7;color:#16a34a;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:800;margin-top:4px}
+.adm-toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(90px);background:#0f1d30;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:700;z-index:11000;opacity:0;transition:all .3s cubic-bezier(.4,0,.2,1);pointer-events:none;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.adm-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* TABS */
+.adm-tabs{display:flex;gap:4px;background:var(--gray-100);padding:5px;border-radius:14px;margin-bottom:22px;width:fit-content}
+.adm-tab{padding:8px 20px;border-radius:10px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:800;border:none;cursor:pointer;background:transparent;color:var(--gray-400);transition:var(--t)}
+.adm-tab.active{background:#fff;color:var(--blue);box-shadow:var(--shadow-sm)}
+/* Category cards in admin */
+.adm-cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px}
+.adm-cat-card{background:#fff;border-radius:var(--r-lg);border:1.5px solid var(--gray-200);overflow:hidden;box-shadow:var(--shadow-sm)}
+.adm-cat-thumb{width:100%;height:110px;object-fit:cover;display:block;border-bottom:1.5px solid var(--gray-200)}
+.adm-cat-info{padding:12px 14px}
+.adm-cat-name{font-size:14px;font-weight:900;color:var(--gray-900);margin-bottom:2px}
+.adm-cat-count{font-size:11px;color:var(--gray-400);margin-bottom:10px}
+.adm-cat-upload-btn{width:100%;padding:8px;background:var(--blue-l);color:var(--blue);border:none;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:800;cursor:pointer;transition:var(--t)}
+.adm-cat-upload-btn:hover{background:var(--blue);color:#fff}
+/* Image upload zone */
+.adm-upload-zone{
+  border:2.5px dashed var(--gray-200);border-radius:14px;
+  padding:28px 16px;text-align:center;cursor:pointer;
+  transition:var(--t);background:var(--gray-100);
+  position:relative;overflow:hidden;
+}
+.adm-upload-zone:hover,.adm-upload-zone.drag{border-color:var(--blue);background:var(--blue-l)}
+.adm-upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.adm-upload-icon{font-size:36px;margin-bottom:8px}
+.adm-upload-text{font-size:13px;font-weight:700;color:var(--gray-600);margin-bottom:4px}
+.adm-upload-sub{font-size:11px;color:var(--gray-400)}
+.adm-img-large-preview{width:100%;max-height:180px;object-fit:cover;border-radius:10px;margin-top:12px;display:none;border:1.5px solid var(--gray-200)}
+@media(max-width:720px){
+  .adm-prod-row{grid-template-columns:44px 1fr 80px}
+  .adm-prod-row .adm-prod-badge-col,.adm-prod-row .adm-btn-col{display:none}
+  .adm-stats{grid-template-columns:repeat(2,1fr)}
+  .adm-two-col{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -953,7 +1087,12 @@ const IMAGES_BY_CAT = {
   ],
 };
 
+function getCatOverrides(){ try{return JSON.parse(localStorage.getItem('youmed_cat_overrides')||'{}')}catch{return{}} }
+function saveCatOverrides(o){ localStorage.setItem('youmed_cat_overrides', JSON.stringify(o)) }
+
 function catImage(catId, seed) {
+  const co = getCatOverrides();
+  if(co[catId] && co[catId].img) return co[catId].img;
   const pool = IMAGES_BY_CAT[catId] || IMAGES_BY_CAT['قياس'];
   return pool[Math.abs(seed) % pool.length];
 }
@@ -1405,7 +1544,7 @@ function cartCheckout() {
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeModal(); closeCartDrawer(); closeSuccessPopup(); }
+  if (e.key === 'Escape') { closeModal(); closeCartDrawer(); closeSuccessPopup(); closeAdminLogin(); closeAdminEdit(); }
 });
 
 /* ══════════════════════════════════════
@@ -1647,10 +1786,624 @@ document.getElementById('searchInput').addEventListener('input', function() {
 });
 
 /* ══════════════════════════════════════
+   ADMIN — APPLY STORED OVERRIDES ON LOAD
+══════════════════════════════════════ */
+(function applyStoredOverrides(){
+  try {
+    const deleted = JSON.parse(localStorage.getItem('youmed_deleted')||'[]');
+    deleted.forEach(function(id){
+      const i=ALL_PRODS.findIndex(x=>x.id==id);
+      if(i!==-1) ALL_PRODS.splice(i,1);
+    });
+    const overrides = JSON.parse(localStorage.getItem('youmed_overrides')||'{}');
+    Object.entries(overrides).forEach(([id,ov])=>{
+      const p=ALL_PRODS.find(x=>x.id==id);
+      if(p) Object.assign(p,ov);
+    });
+    const newProds = JSON.parse(localStorage.getItem('youmed_new_prods')||'[]');
+    newProds.forEach(np=>{
+      if(!ALL_PRODS.find(x=>x.id===np.id)) ALL_PRODS.push(np);
+    });
+    CATS.forEach(cat=>{
+      cat.count = ALL_PRODS.filter(p=>p.cat===cat.id).length;
+    });
+  } catch(e){}
+})();
+
+/* ══════════════════════════════════════
+   ADMIN — TAP COUNTER (hidden dot)
+══════════════════════════════════════ */
+let _admTaps=0, _admTimer=null;
+function adminTapCount(){
+  _admTaps++;
+  clearTimeout(_admTimer);
+  _admTimer=setTimeout(()=>_admTaps=0, 3000);
+  if(_admTaps>=5){ _admTaps=0; showAdminLogin(); }
+}
+
+/* ══════════════════════════════════════
+   ADMIN — LOGIN
+══════════════════════════════════════ */
+const ADMIN_PASS='youmed2024';
+function showAdminLogin(){
+  document.getElementById('adminLoginOverlay').classList.add('show');
+  document.getElementById('adminPassInput').value='';
+  document.getElementById('adminLoginErr').classList.remove('show');
+  setTimeout(()=>document.getElementById('adminPassInput').focus(),120);
+}
+function closeAdminLogin(){
+  document.getElementById('adminLoginOverlay').classList.remove('show');
+}
+function adminLogin(){
+  const val=document.getElementById('adminPassInput').value;
+  if(val===ADMIN_PASS){ closeAdminLogin(); openAdminPanel(); }
+  else{
+    document.getElementById('adminLoginErr').classList.add('show');
+    document.getElementById('adminPassInput').value='';
+    document.getElementById('adminPassInput').focus();
+  }
+}
+
+/* ══════════════════════════════════════
+   ADMIN — OPEN/CLOSE PANEL
+══════════════════════════════════════ */
+function openAdminPanel(){
+  document.getElementById('adminPanel').classList.add('show');
+  document.body.style.overflow='hidden';
+  renderAdminPanel();
+}
+function closeAdminPanel(){
+  document.getElementById('adminPanel').classList.remove('show');
+  document.body.style.overflow='';
+}
+
+/* ══════════════════════════════════════
+   ADMIN — STORAGE HELPERS
+══════════════════════════════════════ */
+function getOverrides(){ try{ return JSON.parse(localStorage.getItem('youmed_overrides')||'{}'); }catch(e){ return {}; } }
+function saveOverrides(ov){ localStorage.setItem('youmed_overrides',JSON.stringify(ov)); }
+function getNewProds(){ try{ return JSON.parse(localStorage.getItem('youmed_new_prods')||'[]'); }catch(e){ return []; } }
+function saveNewProds(arr){ localStorage.setItem('youmed_new_prods',JSON.stringify(arr)); }
+function getDeleted(){ try{ return JSON.parse(localStorage.getItem('youmed_deleted')||'[]'); }catch(e){ return []; } }
+function saveDeleted(arr){ localStorage.setItem('youmed_deleted',JSON.stringify(arr)); }
+
+/* ══════════════════════════════════════
+   ADMIN — RENDER PANEL
+══════════════════════════════════════ */
+let _admActiveTab = 'products';
+function admSwitchTab(tab){
+  _admActiveTab = tab;
+  document.querySelectorAll('.adm-tab').forEach(t=>t.classList.toggle('active', t.dataset.tab===tab));
+  document.getElementById('admTabProducts').style.display = tab==='products'?'block':'none';
+  document.getElementById('admTabCats').style.display     = tab==='cats'?'block':'none';
+}
+
+function renderAdminPanel(){
+  const overrides=getOverrides();
+  const catOverrides=getCatOverrides();
+  const modifiedCount=Object.keys(overrides).length;
+  const b64Count=Object.values(overrides).filter(v=>v.img&&v.img.startsWith('data:')).length
+               +getNewProds().filter(v=>v.img&&v.img.startsWith('data:')).length
+               +Object.values(catOverrides).filter(v=>v.img&&v.img.startsWith('data:')).length;
+
+  document.getElementById('adminBody').innerHTML=`
+    <div class="adm-stats">
+      <div class="adm-stat-card"><div class="adm-stat-val">${ALL_PRODS.length}</div><div class="adm-stat-lbl">إجمالي المنتجات</div></div>
+      <div class="adm-stat-card"><div class="adm-stat-val">${CATS.length}</div><div class="adm-stat-lbl">الفئات</div></div>
+      <div class="adm-stat-card"><div class="adm-stat-val">${modifiedCount}</div><div class="adm-stat-lbl">منتج معدّل</div></div>
+      <div class="adm-stat-card"><div class="adm-stat-val">${b64Count}</div><div class="adm-stat-lbl">صورة Base64 مدمجة</div></div>
+    </div>
+
+    <div class="adm-tabs">
+      <button class="adm-tab ${_admActiveTab==='products'?'active':''}" data-tab="products" onclick="admSwitchTab('products')">📦 المنتجات</button>
+      <button class="adm-tab ${_admActiveTab==='cats'?'active':''}" data-tab="cats" onclick="admSwitchTab('cats')">🗂️ الفئات</button>
+    </div>
+
+    <!-- TAB: PRODUCTS -->
+    <div id="admTabProducts" style="display:${_admActiveTab==='products'?'block':'none'}">
+      <div class="adm-section-title">
+        📦 قائمة المنتجات
+        <button class="adm-header-btn adm-btn-primary" style="margin-right:auto;font-size:12px;padding:7px 14px" onclick="openAdminAdd()">+ إضافة منتج جديد</button>
+      </div>
+      <div class="adm-prod-table">
+        <div class="adm-prod-row adm-row-head">
+          <span>الصورة</span><span>المنتج</span><span>السعر</span>
+          <span class="adm-prod-badge-col">الشارة</span>
+          <span class="adm-btn-col">إجراءات</span>
+        </div>
+        ${ALL_PRODS.map(p=>`
+          <div class="adm-prod-row">
+            <img class="adm-prod-thumb" src="${p.img}" alt="${p.name}" loading="lazy"
+              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 60%22%3E%3Crect fill=%22%23e8f2ff%22 width=%2260%22 height=%2260%22/%3E%3Ctext y=%2240%22 x=%228%22 font-size=%2230%22%3E%F0%9F%8F%A5%3C/text%3E%3C/svg%3E'"/>
+            <div>
+              <div class="adm-prod-name">${p.name}</div>
+              <div class="adm-prod-cat">${p.catName}</div>
+            </div>
+            <div class="adm-prod-price">${fmtPrice(p.price)}</div>
+            <div class="adm-prod-badge-col"><span class="adm-prod-badge-tag">${p.badge}</span></div>
+            <div class="adm-btn-col"><div class="adm-row-btns">
+              <button class="adm-edit-btn" onclick="openAdminEdit(${p.id})">✏️ تعديل</button>
+              <button class="adm-del-btn" onclick="deleteAdminProd(${p.id})">🗑️</button>
+            </div></div>
+          </div>`).join('')}
+      </div>
+    </div>
+
+    <!-- TAB: CATEGORIES -->
+    <div id="admTabCats" style="display:${_admActiveTab==='cats'?'block':'none'}">
+      <div class="adm-section-title">🗂️ الفئات — تعديل الصور والنصوص</div>
+      <div class="adm-cats-grid">
+        ${CATS.map(cat=>`
+          <div class="adm-cat-card">
+            <img class="adm-cat-thumb" src="${catImage(cat.id,0)}" alt="${cat.name}"
+              id="admCatThumb-${cat.id}"
+              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 110%22%3E%3Crect fill=%22%23e8f2ff%22 width=%22200%22 height=%22110%22/%3E%3Ctext y=%2265%22 x=%2270%22 font-size=%2250%22%3E${encodeURIComponent(cat.emoji)}%3C/text%3E%3C/svg%3E'"/>
+            <div class="adm-cat-info">
+              <div class="adm-cat-name">${cat.emoji} ${cat.name}</div>
+              <div class="adm-cat-count">${cat.count} منتج</div>
+              <button class="adm-cat-upload-btn" onclick="openAdminCatEdit('${cat.id}')">✏️ تعديل الفئة</button>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="adm-export-card">
+      <div class="adm-export-title">📦 تصدير الكود النهائي</div>
+      <div class="adm-export-desc">
+        اضغط الزر لتحميل ملف <strong>index.html</strong> كامل يتضمن جميع التعديلات مدمجة فيه بشكل دائم — صور Base64 + نصوص + أسعار.
+        ${b64Count>0?`<br/><span class="adm-b64-badge">✅ ${b64Count} صورة Base64 مدمجة</span>`:''}
+      </div>
+      <button class="adm-header-btn adm-btn-success" onclick="exportHTML()" style="font-size:14px;padding:12px 26px">
+        ⬇️ تحميل index.html المحدّث
+      </button>
+    </div>`;
+}
+
+/* ══════════════════════════════════════
+   ADMIN — EDIT PRODUCT
+══════════════════════════════════════ */
+let _adminEditB64=null;
+
+function openAdminEdit(prodId){
+  const p=ALL_PRODS.find(x=>x.id===prodId);
+  if(!p) return;
+  _adminEditB64=null;
+  document.getElementById('adminEditTitle').textContent=`تعديل: ${p.name}`;
+  document.getElementById('adminEditId').value=p.id;
+  document.getElementById('adminEditName').value=p.name;
+  document.getElementById('adminEditPrice').value=p.price;
+  document.getElementById('adminEditOldPrice').value=p.oldPrice||'';
+  document.getElementById('adminEditCat').value=p.cat;
+  document.getElementById('adminEditDesc').value=p.desc||'';
+  document.getElementById('adminEditBadge').value=p.badge;
+  document.getElementById('adminEditImgUrl').value=p.img&&p.img.startsWith('data:')?'':p.img||'';
+  const prev=document.getElementById('adminEditPreview');
+  if(p.img){ prev.src=p.img; prev.style.display='block'; }
+  else { prev.src=''; prev.style.display='none'; }
+  document.getElementById('adminEditFile').value='';
+  document.getElementById('adminEditOverlay').classList.add('show');
+}
+
+function openAdminAdd(){
+  _adminEditB64=null;
+  document.getElementById('adminEditTitle').textContent='إضافة منتج جديد';
+  document.getElementById('adminEditId').value='';
+  document.getElementById('adminEditName').value='';
+  document.getElementById('adminEditPrice').value='';
+  document.getElementById('adminEditOldPrice').value='';
+  document.getElementById('adminEditCat').value='قياس';
+  document.getElementById('adminEditDesc').value='';
+  document.getElementById('adminEditBadge').value='جديد';
+  document.getElementById('adminEditImgUrl').value='';
+  const prev=document.getElementById('adminEditPreview');
+  prev.src=''; prev.style.display='none';
+  document.getElementById('adminEditFile').value='';
+  document.getElementById('adminEditOverlay').classList.add('show');
+}
+
+function closeAdminEdit(){
+  document.getElementById('adminEditOverlay').classList.remove('show');
+  _adminEditB64=null;
+}
+
+let _adminCatB64=null;
+
+function handleImgUpload(input, target){
+  const file=input.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const b64=e.target.result;
+    if(target==='cat'){
+      _adminCatB64=b64;
+      const prev=document.getElementById('adminCatPreview');
+      prev.src=b64; prev.style.display='block';
+    } else {
+      _adminEditB64=b64;
+      const prev=document.getElementById('adminEditPreview');
+      prev.src=b64; prev.style.display='block';
+      document.getElementById('adminEditImgUrl').value='';
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleImgDrop(event, target){
+  event.preventDefault();
+  const zone = target==='cat'?document.getElementById('catImgZone'):document.getElementById('mainImgZone');
+  if(zone) zone.classList.remove('drag');
+  const file=event.dataTransfer.files[0];
+  if(!file||!file.type.startsWith('image/')) return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const b64=e.target.result;
+    if(target==='cat'){
+      _adminCatB64=b64;
+      const prev=document.getElementById('adminCatPreview');
+      prev.src=b64; prev.style.display='block';
+    } else {
+      _adminEditB64=b64;
+      const prev=document.getElementById('adminEditPreview');
+      prev.src=b64; prev.style.display='block';
+      document.getElementById('adminEditImgUrl').value='';
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function previewImgUrl(url){
+  if(url){
+    const prev=document.getElementById('adminEditPreview');
+    prev.src=url; prev.style.display='block';
+    _adminEditB64=null;
+    document.getElementById('adminEditFile').value='';
+  }
+}
+
+/* ══════════════════════════════════════
+   ADMIN — CATEGORY EDIT
+══════════════════════════════════════ */
+function openAdminCatEdit(catId){
+  _adminCatB64=null;
+  const cat=CATS.find(c=>c.id===catId);
+  if(!cat) return;
+  const co=getCatOverrides();
+  const saved=co[catId]||{};
+  document.getElementById('adminCatEditId').value=catId;
+  document.getElementById('adminCatEditTitle').textContent=`تعديل الفئة: ${cat.emoji} ${cat.name}`;
+  document.getElementById('adminCatEditName').value=saved.name||cat.name;
+  document.getElementById('adminCatEditDesc').value=saved.desc||cat.desc||'';
+  const prev=document.getElementById('adminCatPreview');
+  prev.src=catImage(catId,0); prev.style.display='block';
+  document.getElementById('adminCatFile').value='';
+  document.getElementById('adminCatEditOverlay').classList.add('show');
+}
+
+function closeAdminCatEdit(){
+  document.getElementById('adminCatEditOverlay').classList.remove('show');
+  _adminCatB64=null;
+}
+
+function saveAdminCatEdit(){
+  const catId=document.getElementById('adminCatEditId').value;
+  const name=document.getElementById('adminCatEditName').value.trim();
+  const desc=document.getElementById('adminCatEditDesc').value.trim();
+  const co=getCatOverrides();
+  co[catId]=co[catId]||{};
+  if(name) co[catId].name=name;
+  if(desc) co[catId].desc=desc;
+  if(_adminCatB64) co[catId].img=_adminCatB64;
+  saveCatOverrides(co);
+  /* apply to live CATS array */
+  const cat=CATS.find(c=>c.id===catId);
+  if(cat){
+    if(name) cat.name=name;
+    if(desc) cat.desc=desc;
+  }
+  /* refresh category card thumbnail in panel */
+  const thumb=document.getElementById('admCatThumb-'+catId);
+  if(thumb&&_adminCatB64) thumb.src=_adminCatB64;
+  closeAdminCatEdit();
+  buildCatsGrid();
+  showAdminToast('✅ تم حفظ الفئة بنجاح');
+  renderAdminPanel();
+}
+
+function saveAdminEdit(){
+  const id=document.getElementById('adminEditId').value;
+  const name=document.getElementById('adminEditName').value.trim();
+  const price=parseFloat(document.getElementById('adminEditPrice').value);
+  const oldPriceRaw=document.getElementById('adminEditOldPrice').value;
+  const oldPrice=oldPriceRaw?parseFloat(oldPriceRaw):null;
+  const cat=document.getElementById('adminEditCat').value;
+  const desc=document.getElementById('adminEditDesc').value.trim();
+  const badge=document.getElementById('adminEditBadge').value;
+  const urlInput=document.getElementById('adminEditImgUrl').value.trim();
+  const previewSrc=document.getElementById('adminEditPreview').src||'';
+  const img=_adminEditB64||(urlInput||previewSrc)||'';
+
+  if(!name||isNaN(price)||price<=0){ showAdminToast('⚠️ أدخل اسماً وسعراً صحيحاً'); return; }
+
+  const catObj=CATS.find(c=>c.id===cat);
+  const catName=catObj?catObj.name:cat;
+  const badgeClass=BADGE_CLASSES[badge]||'b-blue';
+
+  if(id){
+    /* Update existing */
+    const ov={name,price,oldPrice,cat,catName,desc,img,badge,badgeClass};
+    const overrides=getOverrides();
+    overrides[id]=ov;
+    saveOverrides(overrides);
+    const p=ALL_PRODS.find(x=>x.id==id);
+    if(p) Object.assign(p,ov);
+  } else {
+    /* Add new product */
+    const newId=Math.max(...ALL_PRODS.map(x=>x.id),0)+1;
+    const np={
+      id:newId,cat,catName,name,desc,img,price,oldPrice,badge,badgeClass,
+      rating:5.0,reviews:0,emoji:'🏥',
+      features:['منتج معتمد من وزارة الصحة الجزائرية','جودة دولية مضمونة 100%','سهل الاستخدام في المنزل','ضمان لمدة سنة كاملة'],
+    };
+    ALL_PRODS.push(np);
+    const newProds=getNewProds();
+    newProds.push(np);
+    saveNewProds(newProds);
+    if(catObj) catObj.count=ALL_PRODS.filter(p=>p.cat===catObj.id).length;
+  }
+
+  closeAdminEdit();
+  buildCatsGrid();
+  showAdminToast('✅ تم الحفظ بنجاح');
+  renderAdminPanel();
+}
+
+function deleteAdminProd(prodId){
+  if(!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
+  const idx=ALL_PRODS.findIndex(x=>x.id===prodId);
+  if(idx!==-1) ALL_PRODS.splice(idx,1);
+  const overrides=getOverrides();
+  delete overrides[prodId];
+  saveOverrides(overrides);
+  const newProds=getNewProds().filter(x=>x.id!==prodId);
+  saveNewProds(newProds);
+  const del=getDeleted();
+  if(!del.includes(prodId)) del.push(prodId);
+  saveDeleted(del);
+  CATS.forEach(cat=>{ cat.count=ALL_PRODS.filter(p=>p.cat===cat.id).length; });
+  buildCatsGrid();
+  showAdminToast('🗑️ تم حذف المنتج');
+  renderAdminPanel();
+}
+
+/* ══════════════════════════════════════
+   ADMIN — TOAST
+══════════════════════════════════════ */
+let _toastTimer=null;
+function showAdminToast(msg){
+  const t=document.getElementById('adminToast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer=setTimeout(()=>t.classList.remove('show'),3200);
+}
+
+/* ══════════════════════════════════════
+   ADMIN — EXPORT HTML
+══════════════════════════════════════ */
+async function exportHTML(){
+  showAdminToast('⏳ جاري توليد الملف...');
+  const overrides=getOverrides();
+  const newProds=getNewProds();
+  const deleted=getDeleted();
+  const catOverrides=getCatOverrides();
+
+  const injectBlock=`\n<script id="__youmed_admin_data__">
+(function(){
+  var _OVR=${JSON.stringify(overrides)};
+  var _NEW=${JSON.stringify(newProds)};
+  var _DEL=${JSON.stringify(deleted)};
+  var _COVR=${JSON.stringify(catOverrides)};
+  _DEL.forEach(function(id){var i=ALL_PRODS.findIndex(function(x){return x.id==id;});if(i!==-1)ALL_PRODS.splice(i,1);});
+  Object.entries(_OVR).forEach(function(e){var p=ALL_PRODS.find(function(x){return x.id==e[0];});if(p)Object.assign(p,e[1]);});
+  _NEW.forEach(function(np){if(!ALL_PRODS.find(function(x){return x.id===np.id;}))ALL_PRODS.push(np);});
+  CATS.forEach(function(c){c.count=ALL_PRODS.filter(function(p){return p.cat===c.id;}).length;});
+  /* inject cat overrides into localStorage of exported file */
+  try{localStorage.setItem('youmed_cat_overrides',JSON.stringify(_COVR));}catch(e){}
+})();
+<\/script>`;
+
+  function doDownload(html){
+    const blob=new Blob([html],{type:'text/html;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download='youmed-index.html';
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showAdminToast('✅ تم تنزيل الملف بنجاح!');
+  }
+
+  try {
+    const resp=await fetch(window.location.href);
+    let html=await resp.text();
+    /* Inject override block right before buildCatsGrid() */
+    html=html.replace('buildCatsGrid();',injectBlock+'\nbuildCatsGrid();');
+    doDownload(html);
+  } catch(err){
+    /* Fallback: live DOM + inject */
+    let html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+    html=html.replace('buildCatsGrid();',injectBlock+'\nbuildCatsGrid();');
+    doDownload(html);
+  }
+}
+
+/* ══════════════════════════════════════
    INIT
 ══════════════════════════════════════ */
 buildCatsGrid();
 refreshCartUI();
 </script>
+
+<!-- ══════════════ ADMIN FLOATING BUTTON ══════════════ -->
+<button class="adm-float-btn" onclick="showAdminLogin()" title="لوحة التحكم">
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.2">
+    <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+  </svg>
+  إدارة الموقع
+</button>
+
+<!-- ══════════════ ADMIN LOGIN ══════════════ -->
+<div class="adm-login-overlay" id="adminLoginOverlay">
+  <div class="adm-login-box">
+    <button class="adm-login-close" onclick="closeAdminLogin()">✕</button>
+    <div class="adm-login-logo">🏥</div>
+    <div class="adm-login-title">لوحة التحكم</div>
+    <div class="adm-login-sub">YouMed Admin — أدخل كلمة المرور للمتابعة</div>
+    <input class="adm-login-input" id="adminPassInput" type="password"
+      placeholder="••••••••" autocomplete="off"
+      onkeydown="if(event.key==='Enter')adminLogin()"/>
+    <button class="adm-login-btn" onclick="adminLogin()">🔑 دخول</button>
+    <div class="adm-login-err" id="adminLoginErr">كلمة مرور خاطئة، حاول مجدداً</div>
+  </div>
+</div>
+
+<!-- ══════════════ ADMIN PANEL ══════════════ -->
+<div class="adm-panel" id="adminPanel">
+  <div class="adm-header">
+    <div>
+      <div class="adm-header-logo">🏥 YouMed — لوحة التحكم</div>
+      <div class="adm-header-sub">تعديل المنتجات والفئات والصور والأسعار</div>
+    </div>
+    <div class="adm-header-space"></div>
+    <button class="adm-header-btn adm-btn-success" onclick="exportHTML()">⬇️ تصدير HTML</button>
+    <button class="adm-header-btn adm-btn-ghost" onclick="closeAdminPanel()">✕ إغلاق</button>
+  </div>
+  <div class="adm-body" id="adminBody"></div>
+</div>
+
+<!-- ══════════════ ADMIN EDIT PRODUCT MODAL ══════════════ -->
+<div class="adm-edit-overlay" id="adminEditOverlay">
+  <div class="adm-edit-box">
+    <div class="adm-edit-head">
+      <div class="adm-edit-title" id="adminEditTitle">تعديل المنتج</div>
+      <button class="adm-edit-close" onclick="closeAdminEdit()">✕</button>
+    </div>
+    <div class="adm-edit-body">
+      <input type="hidden" id="adminEditId"/>
+
+      <!-- صورة المنتج الرئيسية — في الأعلى للوضوح -->
+      <div class="adm-field">
+        <label class="adm-label">📷 صورة المنتج الرئيسية</label>
+        <div class="adm-upload-zone" id="mainImgZone"
+          ondragover="event.preventDefault();this.classList.add('drag')"
+          ondragleave="this.classList.remove('drag')"
+          ondrop="handleImgDrop(event,'main')">
+          <input type="file" accept="image/*" id="adminEditFile" onchange="handleImgUpload(this,'main')"/>
+          <div class="adm-upload-icon">🖼️</div>
+          <div class="adm-upload-text">اسحب الصورة هنا أو انقر للاختيار</div>
+          <div class="adm-upload-sub">PNG · JPG · WebP — تُحوَّل تلقائياً لـ Base64</div>
+          <img class="adm-img-large-preview" id="adminEditPreview" src="" alt=""/>
+        </div>
+      </div>
+
+      <div class="adm-field">
+        <label class="adm-label">اسم المنتج <span style="color:var(--red)">*</span></label>
+        <input class="adm-input" id="adminEditName" type="text" placeholder="مثال: جهاز قياس الضغط الذكي"/>
+      </div>
+      <div class="adm-two-col">
+        <div class="adm-field">
+          <label class="adm-label">السعر (Da) <span style="color:var(--red)">*</span></label>
+          <input class="adm-input" id="adminEditPrice" type="number" min="1" placeholder="850"/>
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">السعر القبل الخصم (Da)</label>
+          <input class="adm-input" id="adminEditOldPrice" type="number" placeholder="اتركه فارغاً"/>
+        </div>
+      </div>
+      <div class="adm-two-col">
+        <div class="adm-field">
+          <label class="adm-label">الفئة</label>
+          <select class="adm-select" id="adminEditCat">
+            <option value="قياس">🩺 أجهزة القياس</option>
+            <option value="مكملات">💊 المكملات الغذائية</option>
+            <option value="تأهيل">🦽 معدات التأهيل</option>
+            <option value="جراحية">🩹 المستلزمات الجراحية</option>
+            <option value="بصر">👁️ رعاية البصر</option>
+            <option value="أسنان">🦷 صحة الأسنان</option>
+            <option value="جلد">🧴 رعاية الجلد</option>
+            <option value="قلب">❤️ صحة القلب</option>
+          </select>
+        </div>
+        <div class="adm-field">
+          <label class="adm-label">الشارة</label>
+          <select class="adm-select" id="adminEditBadge">
+            <option value="الأكثر مبيعاً">الأكثر مبيعاً</option>
+            <option value="جديد">جديد</option>
+            <option value="خصم خاص">خصم خاص</option>
+            <option value="مميز">مميز</option>
+            <option value="عرض محدود">عرض محدود</option>
+            <option value="أصيل">أصيل</option>
+          </select>
+        </div>
+      </div>
+      <div class="adm-field">
+        <label class="adm-label">الوصف</label>
+        <textarea class="adm-textarea" id="adminEditDesc" placeholder="وصف المنتج..."></textarea>
+      </div>
+      <div class="adm-field">
+        <label class="adm-label">رابط الصورة (بديل عن الرفع المباشر)</label>
+        <input class="adm-input" id="adminEditImgUrl" type="url"
+          placeholder="https://..." oninput="previewImgUrl(this.value)"
+          style="font-size:13px"/>
+      </div>
+    </div>
+    <div class="adm-edit-footer">
+      <button class="adm-cancel-btn" onclick="closeAdminEdit()">إلغاء</button>
+      <button class="adm-save-btn" onclick="saveAdminEdit()">💾 حفظ التعديلات</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ADMIN EDIT CATEGORY IMAGE MODAL ══════════════ -->
+<div class="adm-edit-overlay" id="adminCatEditOverlay">
+  <div class="adm-edit-box" style="max-width:440px">
+    <div class="adm-edit-head">
+      <div class="adm-edit-title" id="adminCatEditTitle">تعديل صورة الفئة</div>
+      <button class="adm-edit-close" onclick="closeAdminCatEdit()">✕</button>
+    </div>
+    <div class="adm-edit-body">
+      <input type="hidden" id="adminCatEditId"/>
+      <div class="adm-field">
+        <label class="adm-label">📷 صورة الفئة الرئيسية (البانر)</label>
+        <div class="adm-upload-zone" id="catImgZone"
+          ondragover="event.preventDefault();this.classList.add('drag')"
+          ondragleave="this.classList.remove('drag')"
+          ondrop="handleImgDrop(event,'cat')">
+          <input type="file" accept="image/*" id="adminCatFile" onchange="handleImgUpload(this,'cat')"/>
+          <div class="adm-upload-icon">🏷️</div>
+          <div class="adm-upload-text">اسحب صورة البانر هنا أو انقر</div>
+          <div class="adm-upload-sub">تظهر كخلفية بطاقة الفئة في الصفحة الرئيسية</div>
+          <img class="adm-img-large-preview" id="adminCatPreview" src="" alt=""/>
+        </div>
+      </div>
+      <div class="adm-field">
+        <label class="adm-label">اسم الفئة</label>
+        <input class="adm-input" id="adminCatEditName" type="text"/>
+      </div>
+      <div class="adm-field">
+        <label class="adm-label">وصف الفئة</label>
+        <textarea class="adm-textarea" id="adminCatEditDesc" style="min-height:54px"></textarea>
+      </div>
+    </div>
+    <div class="adm-edit-footer">
+      <button class="adm-cancel-btn" onclick="closeAdminCatEdit()">إلغاء</button>
+      <button class="adm-save-btn" onclick="saveAdminCatEdit()">💾 حفظ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ADMIN TOAST ══════════════ -->
+<div class="adm-toast" id="adminToast"></div>
+
 </body>
 </html>
