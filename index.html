@@ -531,7 +531,7 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-login-err.show{display:block}
 .adm-login-close{position:absolute;top:14px;left:14px;background:var(--gray-100);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:var(--t)}
 .adm-login-close:hover{background:var(--gray-200)}
-.adm-panel{position:fixed;inset:0;z-index:9998;background:#f0f4f8;display:none;flex-direction:column;overflow:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);touch-action:none}
+.adm-panel{position:fixed;inset:0;z-index:9998;background:#f0f4f8;display:none;flex-direction:column;overflow:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 .adm-panel.show{display:flex}
 .adm-header{background:#fff;border-bottom:1.5px solid var(--gray-200);padding:14px 24px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-sm);flex-shrink:0;flex-wrap:wrap}
 .adm-header-logo{font-size:17px;font-weight:900;color:var(--blue)}
@@ -546,7 +546,7 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-btn-danger:hover{background:#c0392b}
 .adm-btn-ghost{background:var(--gray-100);color:var(--gray-600);border:1.5px solid var(--gray-200)}
 .adm-btn-ghost:hover{background:var(--gray-200)}
-.adm-body{flex:1;min-height:0;overflow-y:scroll;overflow-x:hidden;padding:24px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
+.adm-body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:24px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 .adm-section-title{font-size:16px;font-weight:900;color:var(--gray-900);margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .adm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
 .adm-stat-card{background:#fff;border-radius:var(--r-lg);padding:18px 20px;border:1.5px solid var(--gray-200);box-shadow:var(--shadow-sm)}
@@ -1867,45 +1867,25 @@ function adminLogin(){
    ADMIN — OPEN/CLOSE PANEL
 ══════════════════════════════════════ */
 let _bodyScrollY=0;
-let _admTouchHandler=null;
 
 function openAdminPanel(){
   _bodyScrollY=window.scrollY||window.pageYOffset;
   document.body.style.position='fixed';
   document.body.style.top='-'+_bodyScrollY+'px';
-  document.body.style.width='100%';
-  document.body.style.overflow='hidden';
+  document.body.style.left='0';
+  document.body.style.right='0';
   document.getElementById('adminPanel').classList.add('show');
   const admBody=document.getElementById('adminBody');
   if(admBody) admBody.scrollTop=0;
-
-  /* iOS one-finger scroll fix: allow touchmove inside #adminBody only */
-  if(_admTouchHandler) document.removeEventListener('touchmove',_admTouchHandler,{passive:false});
-  _admTouchHandler=function(e){
-    const inside=e.target.closest('#adminBody');
-    if(!inside){ e.preventDefault(); return; }
-    /* allow scroll only if adminBody can still scroll */
-    const el=admBody;
-    const up=e.touches[0].clientY>(_admLastTY||0);
-    _admLastTY=e.touches[0].clientY;
-    if(up&&el.scrollTop===0){ e.preventDefault(); return; }
-    if(!up&&el.scrollTop+el.clientHeight>=el.scrollHeight){ e.preventDefault(); return; }
-  };
-  document.addEventListener('touchmove',_admTouchHandler,{passive:false});
   renderAdminPanel();
 }
-let _admLastTY=0;
 
 function closeAdminPanel(){
   document.getElementById('adminPanel').classList.remove('show');
-  if(_admTouchHandler){
-    document.removeEventListener('touchmove',_admTouchHandler,{passive:false});
-    _admTouchHandler=null;
-  }
   document.body.style.position='';
   document.body.style.top='';
-  document.body.style.width='';
-  document.body.style.overflow='';
+  document.body.style.left='';
+  document.body.style.right='';
   window.scrollTo(0,_bodyScrollY);
 }
 
