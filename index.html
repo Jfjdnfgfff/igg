@@ -552,22 +552,26 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-stat-card{background:#fff;border-radius:var(--r-lg);padding:18px 20px;border:1.5px solid var(--gray-200);box-shadow:var(--shadow-sm)}
 .adm-stat-val{font-size:26px;font-weight:900;color:var(--blue);margin-bottom:2px}
 .adm-stat-lbl{font-size:12px;color:var(--gray-400);font-weight:700}
-.adm-prod-table{background:#fff;border-radius:var(--r-lg);border:1.5px solid var(--gray-200);overflow:hidden;box-shadow:var(--shadow-sm)}
-.adm-prod-row{display:grid;grid-template-columns:56px 1fr 100px 120px 150px;gap:12px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--gray-200);transition:background .15s}
-.adm-prod-row:last-child{border-bottom:none}
-.adm-prod-row:hover{background:var(--gray-100)}
-.adm-prod-row.adm-row-head{background:var(--blue-l);font-weight:800;font-size:11px;color:var(--blue);border-bottom:2px solid var(--gray-200)}
-.adm-prod-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;border:1.5px solid var(--gray-200)}
-.adm-prod-name{font-size:13px;font-weight:700;color:var(--gray-900);line-height:1.4}
-.adm-prod-cat{font-size:11px;color:var(--gray-400)}
-.adm-prod-price{font-size:14px;font-weight:800;color:var(--blue)}
-.adm-prod-badge-tag{display:inline-flex;padding:3px 10px;border-radius:50px;font-size:10px;font-weight:800;background:var(--blue-l);color:var(--blue)}
-.adm-row-btns{display:flex;gap:5px}
-.adm-edit-btn,.adm-del-btn{padding:5px 11px;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:800;border:none;cursor:pointer;transition:var(--t)}
+/* PRODUCTS GRID — card-based, works on all screen sizes */
+.adm-prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:8px}
+.adm-prod-card{background:#fff;border-radius:14px;border:1.5px solid var(--gray-200);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .18s,border-color .18s}
+.adm-prod-card:hover{border-color:var(--blue);box-shadow:0 4px 18px rgba(0,87,184,.13)}
+.adm-prod-card-img{width:100%;height:130px;object-fit:cover;display:block;background:var(--blue-l)}
+.adm-prod-card-body{padding:12px 14px;flex:1;display:flex;flex-direction:column;gap:4px}
+.adm-prod-card-name{font-size:13.5px;font-weight:800;color:var(--gray-900);line-height:1.35}
+.adm-prod-card-cat{font-size:11px;color:var(--gray-400);font-weight:600}
+.adm-prod-card-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.adm-prod-card-price{font-size:15px;font-weight:900;color:var(--blue)}
+.adm-prod-badge-tag{display:inline-flex;padding:2px 9px;border-radius:50px;font-size:10px;font-weight:800;background:var(--blue-l);color:var(--blue)}
+.adm-prod-card-footer{display:flex;gap:7px;padding:10px 14px;border-top:1px solid var(--gray-100)}
+.adm-edit-btn,.adm-del-btn{flex:1;padding:8px 10px;border-radius:9px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:800;border:none;cursor:pointer;transition:var(--t);display:flex;align-items:center;justify-content:center;gap:4px}
 .adm-edit-btn{background:var(--blue-l);color:var(--blue)}
 .adm-edit-btn:hover{background:var(--blue);color:#fff}
-.adm-del-btn{background:var(--red-l);color:var(--red)}
+.adm-del-btn{background:#fff0f0;color:var(--red);flex:0 0 40px;padding:8px}
 .adm-del-btn:hover{background:var(--red);color:#fff}
+/* keep old names for compat */
+.adm-prod-table{display:none}
+.adm-prod-row{display:none}
 .adm-edit-overlay{position:fixed;inset:0;z-index:10001;background:rgba(0,20,60,.65);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px}
 .adm-edit-overlay.show{display:flex}
 .adm-edit-box{background:#fff;border-radius:20px;width:min(560px,100%);max-height:92vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,20,60,.3)}
@@ -605,14 +609,23 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-tabs{display:flex;gap:4px;background:var(--gray-100);padding:5px;border-radius:14px;margin-bottom:22px;width:fit-content}
 .adm-tab{padding:8px 20px;border-radius:10px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:800;border:none;cursor:pointer;background:transparent;color:var(--gray-400);transition:var(--t)}
 .adm-tab.active{background:#fff;color:var(--blue);box-shadow:var(--shadow-sm)}
+/* Filter bar */
+.adm-filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;background:var(--blue-l);padding:10px 16px;border-radius:12px}
+.adm-filter-label{font-size:12px;font-weight:800;color:var(--blue)}
+.adm-filter-clear{padding:4px 12px;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:800;border:1.5px solid var(--blue);background:#fff;color:var(--blue);cursor:pointer;transition:var(--t)}
+.adm-filter-clear:hover{background:var(--blue);color:#fff}
 /* Category cards in admin */
 .adm-cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px}
-.adm-cat-card{background:#fff;border-radius:var(--r-lg);border:1.5px solid var(--gray-200);overflow:hidden;box-shadow:var(--shadow-sm)}
+.adm-cat-card{background:#fff;border-radius:var(--r-lg);border:1.5px solid var(--gray-200);overflow:hidden;box-shadow:var(--shadow-sm);transition:border-color .18s,box-shadow .18s;cursor:pointer}
+.adm-cat-card:hover{border-color:var(--blue);box-shadow:0 4px 18px rgba(0,87,184,.14)}
 .adm-cat-thumb{width:100%;height:110px;object-fit:cover;display:block;border-bottom:1.5px solid var(--gray-200)}
 .adm-cat-info{padding:12px 14px}
 .adm-cat-name{font-size:14px;font-weight:900;color:var(--gray-900);margin-bottom:2px}
 .adm-cat-count{font-size:11px;color:var(--gray-400);margin-bottom:10px}
-.adm-cat-upload-btn{width:100%;padding:8px;background:var(--blue-l);color:var(--blue);border:none;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:800;cursor:pointer;transition:var(--t)}
+.adm-cat-btns{display:flex;gap:6px}
+.adm-cat-view-btn{flex:1;padding:7px 8px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:800;cursor:pointer;transition:var(--t)}
+.adm-cat-view-btn:hover{background:var(--blue-d)}
+.adm-cat-upload-btn{flex:0 0 auto;padding:7px 10px;background:var(--blue-l);color:var(--blue);border:none;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:800;cursor:pointer;transition:var(--t)}
 .adm-cat-upload-btn:hover{background:var(--blue);color:#fff}
 /* Image upload zone */
 .adm-upload-zone{
@@ -628,10 +641,11 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-upload-sub{font-size:11px;color:var(--gray-400)}
 .adm-img-large-preview{width:100%;max-height:180px;object-fit:cover;border-radius:10px;margin-top:12px;display:none;border:1.5px solid var(--gray-200)}
 @media(max-width:720px){
-  .adm-prod-row{grid-template-columns:44px 1fr 80px}
-  .adm-prod-row .adm-prod-badge-col,.adm-prod-row .adm-btn-col{display:none}
   .adm-stats{grid-template-columns:repeat(2,1fr)}
   .adm-two-col{grid-template-columns:1fr}
+  .adm-prod-grid{grid-template-columns:1fr}
+  .adm-header{padding:10px 14px;gap:8px}
+  .adm-body{padding:14px}
 }
 </style>
 </head>
@@ -1871,11 +1885,44 @@ function saveDeleted(arr){ localStorage.setItem('youmed_deleted',JSON.stringify(
    ADMIN — RENDER PANEL
 ══════════════════════════════════════ */
 let _admActiveTab = 'products';
+let _admCatFilter = null; /* null = show all */
+
+function admViewCatProds(catId){
+  _admCatFilter = catId;
+  _admActiveTab = 'products';
+  renderAdminPanel();
+}
+
+function admClearFilter(){
+  _admCatFilter = null;
+  renderAdminPanel();
+}
+
 function admSwitchTab(tab){
+  if(tab==='products') _admCatFilter = null;
   _admActiveTab = tab;
-  document.querySelectorAll('.adm-tab').forEach(t=>t.classList.toggle('active', t.dataset.tab===tab));
-  document.getElementById('admTabProducts').style.display = tab==='products'?'block':'none';
-  document.getElementById('admTabCats').style.display     = tab==='cats'?'block':'none';
+  renderAdminPanel();
+}
+
+function _renderProdsGrid(prods){
+  if(!prods.length) return `<div style="text-align:center;padding:40px 0;color:var(--gray-400);font-size:14px;font-weight:700">لا توجد منتجات في هذه الفئة</div>`;
+  return `<div class="adm-prod-grid">${prods.map(p=>`
+    <div class="adm-prod-card">
+      <img class="adm-prod-card-img" src="${p.img||''}" alt="${p.name}" loading="lazy"
+        onerror="this.style.background='var(--blue-l)';this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 130%22%3E%3Crect fill=%22%23e8f2ff%22 width=%22200%22 height=%22130%22/%3E%3Ctext y=%2282%22 x=%2270%22 font-size=%2255%22%3E${encodeURIComponent(p.emoji||'🏥')}%3C/text%3E%3C/svg%3E'"/>
+      <div class="adm-prod-card-body">
+        <div class="adm-prod-card-name">${p.name}</div>
+        <div class="adm-prod-card-cat">${p.catName}</div>
+        <div class="adm-prod-card-row">
+          <div class="adm-prod-card-price">${fmtPrice(p.price)}</div>
+          <span class="adm-prod-badge-tag">${p.badge||''}</span>
+        </div>
+      </div>
+      <div class="adm-prod-card-footer">
+        <button class="adm-edit-btn" onclick="openAdminEdit('${p.id}')">✏️ تعديل</button>
+        <button class="adm-del-btn" onclick="deleteAdminProd('${p.id}')" title="حذف">🗑️</button>
+      </div>
+    </div>`).join('')}</div>`;
 }
 
 function renderAdminPanel(){
@@ -1886,12 +1933,18 @@ function renderAdminPanel(){
                +getNewProds().filter(v=>v.img&&v.img.startsWith('data:')).length
                +Object.values(catOverrides).filter(v=>v.img&&v.img.startsWith('data:')).length;
 
+  const filteredProds = _admCatFilter
+    ? ALL_PRODS.filter(p=>p.cat===_admCatFilter)
+    : ALL_PRODS;
+
+  const activeCat = _admCatFilter ? CATS.find(c=>c.id===_admCatFilter) : null;
+
   document.getElementById('adminBody').innerHTML=`
     <div class="adm-stats">
       <div class="adm-stat-card"><div class="adm-stat-val">${ALL_PRODS.length}</div><div class="adm-stat-lbl">إجمالي المنتجات</div></div>
       <div class="adm-stat-card"><div class="adm-stat-val">${CATS.length}</div><div class="adm-stat-lbl">الفئات</div></div>
       <div class="adm-stat-card"><div class="adm-stat-val">${modifiedCount}</div><div class="adm-stat-lbl">منتج معدّل</div></div>
-      <div class="adm-stat-card"><div class="adm-stat-val">${b64Count}</div><div class="adm-stat-lbl">صورة Base64 مدمجة</div></div>
+      <div class="adm-stat-card"><div class="adm-stat-val">${b64Count}</div><div class="adm-stat-lbl">صورة Base64</div></div>
     </div>
 
     <div class="adm-tabs">
@@ -1901,47 +1954,36 @@ function renderAdminPanel(){
 
     <!-- TAB: PRODUCTS -->
     <div id="admTabProducts" style="display:${_admActiveTab==='products'?'block':'none'}">
+      ${activeCat?`
+      <div class="adm-filter-bar">
+        <span class="adm-filter-label">${activeCat.emoji} ${activeCat.name} — ${filteredProds.length} منتج</span>
+        <button class="adm-filter-clear" onclick="admClearFilter()">✕ عرض الكل</button>
+      </div>`:''}
       <div class="adm-section-title">
-        📦 قائمة المنتجات
-        <button class="adm-header-btn adm-btn-primary" style="margin-right:auto;font-size:12px;padding:7px 14px" onclick="openAdminAdd()">+ إضافة منتج جديد</button>
+        ${activeCat ? activeCat.emoji+' '+activeCat.name : '📦 جميع المنتجات'} (${filteredProds.length})
+        <button class="adm-header-btn adm-btn-primary" style="margin-right:auto;font-size:12px;padding:8px 16px" onclick="openAdminAdd()">+ إضافة منتج</button>
       </div>
-      <div class="adm-prod-table">
-        <div class="adm-prod-row adm-row-head">
-          <span>الصورة</span><span>المنتج</span><span>السعر</span>
-          <span class="adm-prod-badge-col">الشارة</span>
-          <span class="adm-btn-col">إجراءات</span>
-        </div>
-        ${ALL_PRODS.map(p=>`
-          <div class="adm-prod-row">
-            <img class="adm-prod-thumb" src="${p.img}" alt="${p.name}" loading="lazy"
-              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 60%22%3E%3Crect fill=%22%23e8f2ff%22 width=%2260%22 height=%2260%22/%3E%3Ctext y=%2240%22 x=%228%22 font-size=%2230%22%3E%F0%9F%8F%A5%3C/text%3E%3C/svg%3E'"/>
-            <div>
-              <div class="adm-prod-name">${p.name}</div>
-              <div class="adm-prod-cat">${p.catName}</div>
-            </div>
-            <div class="adm-prod-price">${fmtPrice(p.price)}</div>
-            <div class="adm-prod-badge-col"><span class="adm-prod-badge-tag">${p.badge}</span></div>
-            <div class="adm-btn-col"><div class="adm-row-btns">
-              <button class="adm-edit-btn" onclick="openAdminEdit(${p.id})">✏️ تعديل</button>
-              <button class="adm-del-btn" onclick="deleteAdminProd(${p.id})">🗑️</button>
-            </div></div>
-          </div>`).join('')}
-      </div>
+      ${_renderProdsGrid(filteredProds)}
     </div>
 
     <!-- TAB: CATEGORIES -->
     <div id="admTabCats" style="display:${_admActiveTab==='cats'?'block':'none'}">
-      <div class="adm-section-title">🗂️ الفئات — تعديل الصور والنصوص</div>
+      <div class="adm-section-title">🗂️ الفئات</div>
+      <p style="font-size:13px;color:var(--gray-400);margin:-8px 0 16px;font-weight:600">اضغط على فئة لعرض منتجاتها وتعديلها، أو اضغط ✏️ لتعديل صورة الفئة واسمها</p>
       <div class="adm-cats-grid">
         ${CATS.map(cat=>`
           <div class="adm-cat-card">
             <img class="adm-cat-thumb" src="${catImage(cat.id,0)}" alt="${cat.name}"
               id="admCatThumb-${cat.id}"
+              onclick="admViewCatProds('${cat.id}')"
               onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 110%22%3E%3Crect fill=%22%23e8f2ff%22 width=%22200%22 height=%22110%22/%3E%3Ctext y=%2265%22 x=%2270%22 font-size=%2250%22%3E${encodeURIComponent(cat.emoji)}%3C/text%3E%3C/svg%3E'"/>
             <div class="adm-cat-info">
               <div class="adm-cat-name">${cat.emoji} ${cat.name}</div>
-              <div class="adm-cat-count">${cat.count} منتج</div>
-              <button class="adm-cat-upload-btn" onclick="openAdminCatEdit('${cat.id}')">✏️ تعديل الفئة</button>
+              <div class="adm-cat-count">${ALL_PRODS.filter(p=>p.cat===cat.id).length} منتج</div>
+              <div class="adm-cat-btns">
+                <button class="adm-cat-view-btn" onclick="admViewCatProds('${cat.id}')">👁️ عرض المنتجات</button>
+                <button class="adm-cat-upload-btn" onclick="openAdminCatEdit('${cat.id}')">✏️</button>
+              </div>
             </div>
           </div>`).join('')}
       </div>
@@ -1950,7 +1992,7 @@ function renderAdminPanel(){
     <div class="adm-export-card">
       <div class="adm-export-title">📦 تصدير الكود النهائي</div>
       <div class="adm-export-desc">
-        اضغط الزر لتحميل ملف <strong>index.html</strong> كامل يتضمن جميع التعديلات مدمجة فيه بشكل دائم — صور Base64 + نصوص + أسعار.
+        اضغط لتحميل ملف <strong>index.html</strong> كامل مع جميع التعديلات مدمجة — صور Base64 + نصوص + أسعار.
         ${b64Count>0?`<br/><span class="adm-b64-badge">✅ ${b64Count} صورة Base64 مدمجة</span>`:''}
       </div>
       <button class="adm-header-btn adm-btn-success" onclick="exportHTML()" style="font-size:14px;padding:12px 26px">
@@ -1965,7 +2007,7 @@ function renderAdminPanel(){
 let _adminEditB64=null;
 
 function openAdminEdit(prodId){
-  const p=ALL_PRODS.find(x=>x.id===prodId);
+  const p=ALL_PRODS.find(x=>x.id==prodId);
   if(!p) return;
   _adminEditB64=null;
   document.getElementById('adminEditTitle').textContent=`تعديل: ${p.name}`;
@@ -2159,15 +2201,15 @@ function saveAdminEdit(){
 
 function deleteAdminProd(prodId){
   if(!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
-  const idx=ALL_PRODS.findIndex(x=>x.id===prodId);
+  const idx=ALL_PRODS.findIndex(x=>x.id==prodId);
   if(idx!==-1) ALL_PRODS.splice(idx,1);
   const overrides=getOverrides();
   delete overrides[prodId];
   saveOverrides(overrides);
-  const newProds=getNewProds().filter(x=>x.id!==prodId);
+  const newProds=getNewProds().filter(x=>x.id!=prodId);
   saveNewProds(newProds);
   const del=getDeleted();
-  if(!del.includes(prodId)) del.push(prodId);
+  if(!del.find(d=>d==prodId)) del.push(prodId);
   saveDeleted(del);
   CATS.forEach(cat=>{ cat.count=ALL_PRODS.filter(p=>p.cat===cat.id).length; });
   buildCatsGrid();
