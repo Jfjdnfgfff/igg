@@ -2,16 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
 <title>YouMed – متجرك الطبي الموثوق</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-html{overflow-x:hidden}body{font-family:'Tajawal',sans-serif;background:#f0f4f8;color:#1a2634;direction:rtl;min-height:100vh}
+html,body{height:100%;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Tajawal',sans-serif;background:#f0f4f8;color:#1a2634;direction:rtl;min-height:100dvh}
 a{text-decoration:none;color:inherit}
 button{font-family:'Tajawal',sans-serif;cursor:pointer}
 
@@ -339,8 +339,8 @@ header{
 }
 .success-popup-close:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,87,184,.4)}
 
-/* FLOATING WA */
-.wa-float{position:fixed;bottom:26px;left:26px;z-index:800;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+/* FLOATING WA — safe-area bottom */
+.wa-float{position:fixed;bottom:calc(26px + env(safe-area-inset-bottom,0px));left:26px;z-index:800;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
 .wa-label{background:#fff;border-radius:10px;padding:6px 13px;font-size:12px;font-weight:700;color:#075e54;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:6px}
 .wa-label::before{content:'';width:7px;height:7px;background:#25d366;border-radius:50%;animation:blink 1.5s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -348,8 +348,8 @@ header{
 .wa-btn:hover{transform:scale(1.08)}
 @keyframes wapulse{0%,100%{box-shadow:0 5px 18px rgba(37,211,102,.42)}50%{box-shadow:0 5px 32px rgba(37,211,102,.65)}}
 
-/* FOOTER */
-footer{background:#0d1b2e;padding:44px 28px 22px}
+/* FOOTER — safe-area bottom */
+footer{background:#0d1b2e;padding:44px 28px calc(22px + env(safe-area-inset-bottom,0px))}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:44px;max-width:1440px;margin:0 auto 32px}
 .ft-logo-name{font-size:22px;font-weight:900;color:#fff;margin-bottom:10px}
 .ft-logo-name em{color:#60aaff;font-style:normal}
@@ -504,10 +504,9 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 /* ══════════════════════════════════════
    ADMIN PANEL — STYLES
 ══════════════════════════════════════ */
-/* ADMIN FLOATING BUTTON */
 #adminTapDot{display:none}
 .adm-float-btn{
-  position:fixed;bottom:96px;left:26px;z-index:801;
+  position:fixed;bottom:calc(96px + env(safe-area-inset-bottom,0px));left:26px;z-index:801;
   display:flex;align-items:center;gap:8px;
   background:var(--blue);color:#fff;
   padding:10px 16px 10px 14px;border-radius:50px;
@@ -595,7 +594,6 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-stat-card{background:#fff;border-radius:var(--r-lg);padding:18px 20px;border:1.5px solid var(--gray-200);box-shadow:var(--shadow-sm);min-width:0;overflow:hidden}
 .adm-stat-val{font-size:26px;font-weight:900;color:var(--blue);margin-bottom:2px}
 .adm-stat-lbl{font-size:12px;color:var(--gray-400);font-weight:700}
-/* PRODUCTS GRID — card-based, works on all screen sizes */
 .adm-prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:32px;padding-bottom:16px;width:100%;box-sizing:border-box}
 .adm-prod-card{background:#fff;border-radius:14px;border:1.5px solid var(--gray-200);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .18s,border-color .18s;min-width:0;max-width:100%}
 .adm-prod-card:hover{border-color:var(--blue);box-shadow:0 4px 18px rgba(0,87,184,.13)}
@@ -612,7 +610,6 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-edit-btn:hover{background:var(--blue);color:#fff}
 .adm-del-btn{background:#fff0f0;color:var(--red);flex:0 0 40px;padding:8px}
 .adm-del-btn:hover{background:var(--red);color:#fff}
-/* keep old names for compat */
 .adm-prod-table{display:none}
 .adm-prod-row{display:none}
 .adm-edit-overlay{position:fixed;inset:0;z-index:10001;background:rgba(0,20,60,.65);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px}
@@ -648,16 +645,13 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-b64-badge{display:inline-flex;align-items:center;gap:5px;background:#dcfce7;color:#16a34a;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:800;margin-top:4px}
 .adm-toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(90px);background:#0f1d30;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:700;z-index:11000;opacity:0;transition:all .3s cubic-bezier(.4,0,.2,1);pointer-events:none;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 .adm-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-/* TABS */
 .adm-tabs{display:flex;gap:4px;background:var(--gray-100);padding:5px;border-radius:14px;margin-bottom:22px;width:fit-content}
 .adm-tab{padding:8px 20px;border-radius:10px;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:800;border:none;cursor:pointer;background:transparent;color:var(--gray-400);transition:var(--t)}
 .adm-tab.active{background:#fff;color:var(--blue);box-shadow:var(--shadow-sm)}
-/* Filter bar */
 .adm-filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;background:var(--blue-l);padding:10px 16px;border-radius:12px}
 .adm-filter-label{font-size:12px;font-weight:800;color:var(--blue)}
 .adm-filter-clear{padding:4px 12px;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:800;border:1.5px solid var(--blue);background:#fff;color:var(--blue);cursor:pointer;transition:var(--t)}
 .adm-filter-clear:hover{background:var(--blue);color:#fff}
-/* Category cards in admin */
 .adm-cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:24px;width:100%;box-sizing:border-box}
 .adm-cat-card{background:#fff;border-radius:var(--r-lg);border:1.5px solid var(--gray-200);overflow:hidden;box-shadow:var(--shadow-sm);transition:border-color .18s,box-shadow .18s;cursor:pointer;min-width:0;max-width:100%}
 .adm-cat-card:hover{border-color:var(--blue);box-shadow:0 4px 18px rgba(0,87,184,.14)}
@@ -668,36 +662,32 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-cat-btns{display:flex;gap:6px}
 .adm-cat-view-btn{flex:1;padding:7px 8px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:800;cursor:pointer;transition:var(--t)}
 .adm-cat-view-btn:hover{background:var(--blue-d)}
-.adm-cat-upload-btn{flex:0 0 auto;padding:7px 10px;background:var(--blue-l);color:var(--blue);border:none;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:800;cursor:pointer;transition:var(--t)}
+.adm-cat-upload-btn{padding:7px 10px;background:var(--blue-l);color:var(--blue);border:none;border-radius:8px;font-size:14px;cursor:pointer;transition:var(--t)}
 .adm-cat-upload-btn:hover{background:var(--blue);color:#fff}
-/* New-category badge & delete btn */
-.adm-new-cat-badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:50px;font-size:10px;font-weight:800;background:#dcfce7;color:#16a34a;margin-right:6px;vertical-align:middle}
-.adm-cat-del-btn{flex:0 0 auto;padding:7px 10px;background:#fff0f0;color:var(--red);border:none;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:800;cursor:pointer;transition:var(--t)}
+.adm-cat-del-btn{padding:7px 9px;background:#fff0f0;color:var(--red);border:none;border-radius:8px;font-size:13px;cursor:pointer;transition:var(--t)}
 .adm-cat-del-btn:hover{background:var(--red);color:#fff}
-.adm-cat-emoji{font-size:32px;display:block;text-align:center;padding:8px 0 4px}
-/* Image upload zone */
+.adm-new-cat-badge{display:inline-flex;align-items:center;background:var(--teal-l);color:var(--teal-d);border-radius:50px;padding:1px 8px;font-size:9px;font-weight:800;margin-right:5px;vertical-align:middle}
 .adm-upload-zone{
-  border:2.5px dashed var(--gray-200);border-radius:14px;
-  padding:28px 16px;text-align:center;cursor:pointer;
-  transition:var(--t);background:var(--gray-100);
+  border:2px dashed var(--gray-200);border-radius:14px;
+  padding:22px 16px;text-align:center;cursor:pointer;
+  transition:border-color .2s,background .2s;
   position:relative;overflow:hidden;
 }
+.adm-upload-zone input[type=file]{
+  position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;
+}
 .adm-upload-zone:hover,.adm-upload-zone.drag{border-color:var(--blue);background:var(--blue-l)}
-.adm-upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.adm-upload-icon{font-size:36px;margin-bottom:8px}
-.adm-upload-text{font-size:13px;font-weight:700;color:var(--gray-600);margin-bottom:4px}
+.adm-upload-icon{font-size:32px;margin-bottom:6px}
+.adm-upload-text{font-size:13px;font-weight:800;color:var(--gray-900);margin-bottom:3px}
 .adm-upload-sub{font-size:11px;color:var(--gray-400)}
-.adm-img-large-preview{width:100%;max-height:180px;object-fit:cover;border-radius:10px;margin-top:12px;display:none;border:1.5px solid var(--gray-200)}
-@media(max-width:720px){
-  .adm-stats{grid-template-columns:repeat(2,1fr)}
-  .adm-two-col{grid-template-columns:1fr}
-  .adm-prod-grid{grid-template-columns:repeat(2,1fr);gap:9px}
-  .adm-header{padding:10px 14px;gap:8px}
-  .adm-body{padding:12px}
-  .adm-prod-card-img{height:100px}
-  .adm-prod-card-body{padding:8px 10px}
-  .adm-prod-card-name{font-size:12px}
-  .adm-prod-card-footer{padding:7px 10px;gap:5px}
+.adm-img-large-preview{
+  display:none;width:100%;max-height:160px;object-fit:cover;
+  border-radius:10px;margin-top:10px;border:1.5px solid var(--gray-200);
+}
+@media(max-width:640px){
+  .adm-stats{grid-template-columns:repeat(2,1fr);gap:10px}
+  .adm-stat-card{padding:14px 16px}
+  .adm-stat-val{font-size:22px}
   .adm-edit-btn{font-size:11px;padding:6px 7px}
   .adm-edit-box{border-radius:14px;max-height:96vh}
   .adm-edit-body{padding:14px 16px}
@@ -1209,7 +1199,6 @@ const WA_PHONE = '213556482873';
    PRICE FORMAT — always Latin digits + Da
 ══════════════════════════════════════ */
 function fmtPrice(n) {
-  /* e.g. 8292 → "8292Da" */
   return String(Math.round(n)) + 'Da';
 }
 
@@ -1307,7 +1296,6 @@ function catImage(catId, seed) {
   if(nc && nc.img) return nc.img;
   const pool = IMAGES_BY_CAT[catId];
   if(!pool){
-    /* new category without an image → emoji SVG placeholder */
     const em = (nc && nc.emoji)||'🏥';
     return 'data:image/svg+xml,'+encodeURIComponent(
       `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220"><rect fill="#e8f2ff" width="400" height="220"/><text y="145" x="160" font-size="90">${em}</text></svg>`);
@@ -1737,7 +1725,6 @@ function closeCartDrawer() {
   document.getElementById('cartDrawer').classList.remove('open');
   document.getElementById('cartBackdrop').classList.remove('open');
   document.body.style.overflow = '';
-  /* collapse inline form */
   const f=document.getElementById('cartInlineForm');
   const t=document.getElementById('cartCheckoutBtnTxt');
   if(f) f.classList.remove('open');
@@ -1761,7 +1748,6 @@ function orderNow(prodId) {
 }
 
 function cartCheckout() {
-  /* kept for backward compat — now toggles inline form */
   cartToggleOrderForm();
 }
 
@@ -1776,7 +1762,6 @@ function cartToggleOrderForm() {
   } else {
     form.classList.add('open');
     txt.textContent = '✕ إغلاق النموذج';
-    /* scroll the drawer body so the form is visible */
     setTimeout(() => {
       form.scrollIntoView({behavior:'smooth', block:'nearest'});
       document.getElementById('cOrderName').focus({preventScroll:true});
@@ -1799,7 +1784,6 @@ function cartSendOrder() {
   const stateEl = document.getElementById('cOrderState');
   const cityEl  = document.getElementById('cOrderCity');
 
-  /* reset errors */
   [nameEl,phoneEl,stateEl,cityEl].forEach(el=>el.classList.remove('err'));
   let valid = true;
 
@@ -1842,7 +1826,6 @@ function cartSendOrder() {
   btn.disabled = true;
   btn.textContent = '⏳ جاري الإرسال...';
 
-  /* ── Firebase: save cart order ── */
   saveOrderToFirebase({
     type: 'cart',
     customerName: name,
@@ -1867,7 +1850,6 @@ function cartSendOrder() {
     closeCartDrawer();
     showSuccessPopup();
     clearCart();
-    /* reset form */
     [nameEl,phoneEl,cityEl].forEach(el=>el.value='');
     stateEl.value='';
     document.getElementById('cCartCommunesList').innerHTML='';
@@ -2041,7 +2023,6 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
   msg += `🔗 *رابط الموقع:* ${window.location.href}\n`;
   msg += `📧 *البريد الإلكتروني:* Youcefpsg0808@gmail.com`;
 
-  /* ── Firebase: save form order ── */
   saveOrderToFirebase({
     type: 'form',
     customerName: custName,
@@ -2064,7 +2045,6 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
 
   window.open(`https://api.whatsapp.com/send?phone=${WA_PHONE}&text=${encodeURIComponent(msg)}`, '_blank');
 
-  /* Show success popup */
   showSuccessPopup();
 
   this.reset();
@@ -2077,7 +2057,6 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
 ══════════════════════════════════════ */
 function smoothToOrderForm(e) {
   if (e) e.preventDefault();
-  /* If not on cats view, switch first */
   if (!document.getElementById('viewCats').classList.contains('active')) {
     showCats();
     setTimeout(() => {
@@ -2258,7 +2237,7 @@ function saveDeleted(arr){ localStorage.setItem('youmed_deleted',JSON.stringify(
    ADMIN — RENDER PANEL
 ══════════════════════════════════════ */
 let _admActiveTab = 'products';
-let _admCatFilter = null; /* null = show all */
+let _admCatFilter = null;
 
 function admViewCatProds(catId){
   _admCatFilter = catId;
@@ -2325,7 +2304,6 @@ function renderAdminPanel(){
       <button class="adm-tab ${_admActiveTab==='cats'?'active':''}" data-tab="cats" onclick="admSwitchTab('cats')">🗂️ الفئات</button>
     </div>
 
-    <!-- TAB: PRODUCTS -->
     <div id="admTabProducts" style="display:${_admActiveTab==='products'?'block':'none'}">
       ${activeCat?`
       <div class="adm-filter-bar">
@@ -2339,7 +2317,6 @@ function renderAdminPanel(){
       ${_renderProdsGrid(filteredProds)}
     </div>
 
-    <!-- TAB: CATEGORIES -->
     <div id="admTabCats" style="display:${_admActiveTab==='cats'?'block':'none'}">
       <div class="adm-section-title">🗂️ الفئات
         <button class="adm-header-btn adm-btn-primary" style="margin-right:auto;font-size:12px;padding:8px 16px" onclick="openAdminCatAdd()">+ إضافة فئة</button>
@@ -2382,8 +2359,6 @@ function renderAdminPanel(){
 ══════════════════════════════════════ */
 let _adminEditB64=null;
 
-
-/* rebuild product-edit category <select> dynamically */
 function _rebuildCatSelect(currentVal){
   const sel=document.getElementById('adminEditCat');
   if(!sel) return;
@@ -2428,14 +2403,10 @@ function openAdminAdd(){
   document.getElementById('adminEditOverlay').classList.add('show');
 }
 
-
-/* ── iOS zoom-reset helper ───────────────────────────────────────────── */
 function _resetViewportZoom(){
   const vp=document.querySelector('meta[name=viewport]');
   if(!vp) return;
-  /* Briefly allow scaling so the browser resets, then lock again */
-  vp.setAttribute('content','width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover');
-  /* Force a tiny reflow so iOS actually re-reads the tag */
+  vp.setAttribute('content','width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
   document.body.style.minHeight=document.body.offsetHeight+'px';
   requestAnimationFrame(()=>{ document.body.style.minHeight=''; });
 }
@@ -2572,7 +2543,6 @@ function saveAdminCatEdit(){
   if(!name){ showAdminToast('⚠️ أدخل اسم الفئة'); return; }
 
   if(isNew){
-    /* ── ADD new category ── */
     const newId='cat_'+(Date.now()%1e7)+'_'+Math.random().toString(36).slice(2,5);
     const nc={id:newId,name,emoji,desc,img,count:0,banner:'bg-blue'};
     const arr=getNewCats(); arr.push(nc); saveNewCats(arr);
@@ -2584,7 +2554,6 @@ function saveAdminCatEdit(){
     _admActiveTab='cats';
     renderAdminPanel();
   } else {
-    /* ── EDIT existing category ── */
     const co=getCatOverrides();
     co[catId]=co[catId]||{};
     if(name)  co[catId].name=name;
@@ -2592,13 +2561,10 @@ function saveAdminCatEdit(){
     if(emoji) co[catId].emoji=emoji;
     if(img)   co[catId].img=img;
     saveCatOverrides(co);
-    /* update live CATS array */
     const cat=CATS.find(c=>c.id===catId);
     if(cat){ if(name)cat.name=name; if(desc)cat.desc=desc; if(emoji)cat.emoji=emoji; }
-    /* update newCats array if it's a custom cat */
     const arr=getNewCats(); const nc2=arr.find(c=>c.id===catId);
     if(nc2){ if(name)nc2.name=name; if(desc)nc2.desc=desc; if(emoji)nc2.emoji=emoji; if(img)nc2.img=img; saveNewCats(arr); }
-    /* refresh thumbnail in-place */
     const thumb=document.getElementById('admCatThumb-'+catId);
     if(thumb&&img) thumb.src=img;
     if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
@@ -2630,7 +2596,6 @@ function saveAdminEdit(){
   const badgeClass=BADGE_CLASSES[badge]||'b-blue';
 
   if(id){
-    /* Update existing */
     const ov={name,price,oldPrice,cat,catName,desc,img,badge,badgeClass};
     const overrides=getOverrides();
     overrides[id]=ov;
@@ -2638,7 +2603,6 @@ function saveAdminEdit(){
     const p=ALL_PRODS.find(x=>x.id==id);
     if(p) Object.assign(p,ov);
   } else {
-    /* Add new product */
     const newId=Math.max(...ALL_PRODS.map(x=>x.id),0)+1;
     const np={
       id:newId,cat,catName,name,desc,img,price,oldPrice,badge,badgeClass,
@@ -2649,15 +2613,14 @@ function saveAdminEdit(){
     const newProds=getNewProds();
     newProds.push(np);
     saveNewProds(newProds);
-    if(catObj) catObj.count=ALL_PRODS.filter(p=>p.cat===catObj.id).length;
+    CATS.forEach(c=>{ c.count=ALL_PRODS.filter(p=>p.cat===c.id).length; });
   }
 
-  /* blur focused input so iOS releases keyboard/zoom before close */
-  if(document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
   closeAdminEdit();
   buildCatsGrid();
   saveAdminDataToFirebase();
-  showAdminToast('✅ تم الحفظ بنجاح');
+  showAdminToast(id?'✅ تم حفظ التعديلات بنجاح':'✅ تم إضافة المنتج بنجاح');
   renderAdminPanel();
 }
 
@@ -2665,38 +2628,34 @@ function deleteAdminProd(prodId){
   if(!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
   const idx=ALL_PRODS.findIndex(x=>x.id==prodId);
   if(idx!==-1) ALL_PRODS.splice(idx,1);
-  const overrides=getOverrides();
-  delete overrides[prodId];
-  saveOverrides(overrides);
-  const newProds=getNewProds().filter(x=>x.id!=prodId);
-  saveNewProds(newProds);
-  const del=getDeleted();
-  if(!del.find(d=>d==prodId)) del.push(prodId);
-  saveDeleted(del);
-  CATS.forEach(cat=>{ cat.count=ALL_PRODS.filter(p=>p.cat===cat.id).length; });
+  const newProds=getNewProds();
+  const npIdx=newProds.findIndex(x=>x.id==prodId);
+  if(npIdx!==-1){
+    newProds.splice(npIdx,1);
+    saveNewProds(newProds);
+  } else {
+    const deleted=getDeleted();
+    deleted.push(prodId);
+    saveDeleted(deleted);
+  }
+  CATS.forEach(c=>{ c.count=ALL_PRODS.filter(p=>p.cat===c.id).length; });
   buildCatsGrid();
   saveAdminDataToFirebase();
   showAdminToast('🗑️ تم حذف المنتج');
   renderAdminPanel();
 }
 
-/* ══════════════════════════════════════
-   ADMIN — TOAST
-══════════════════════════════════════ */
-let _toastTimer=null;
 function showAdminToast(msg){
   const t=document.getElementById('adminToast');
   t.textContent=msg;
   t.classList.add('show');
-  clearTimeout(_toastTimer);
-  _toastTimer=setTimeout(()=>t.classList.remove('show'),3200);
+  setTimeout(()=>t.classList.remove('show'),2800);
 }
 
 /* ══════════════════════════════════════
    ADMIN — EXPORT HTML
 ══════════════════════════════════════ */
 async function exportHTML(){
-  showAdminToast('⏳ جاري توليد الملف...');
   const overrides=getOverrides();
   const newProds=getNewProds();
   const deleted=getDeleted();
@@ -2734,11 +2693,9 @@ async function exportHTML(){
   try {
     const resp=await fetch(window.location.href);
     let html=await resp.text();
-    /* Inject override block right before buildCatsGrid() */
     html=html.replace('buildCatsGrid();',injectBlock+'\nbuildCatsGrid();');
     doDownload(html);
   } catch(err){
-    /* Fallback: live DOM + inject */
     let html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
     html=html.replace('buildCatsGrid();',injectBlock+'\nbuildCatsGrid();');
     doDownload(html);
@@ -2801,7 +2758,6 @@ refreshCartUI();
     <div class="adm-edit-body">
       <input type="hidden" id="adminEditId"/>
 
-      <!-- صورة المنتج الرئيسية — في الأعلى للوضوح -->
       <div class="adm-field">
         <label class="adm-label">📷 صورة المنتج الرئيسية</label>
         <div class="adm-upload-zone" id="mainImgZone"
@@ -2863,8 +2819,7 @@ refreshCartUI();
       <div class="adm-field">
         <label class="adm-label">رابط الصورة (بديل عن الرفع المباشر)</label>
         <input class="adm-input" id="adminEditImgUrl" type="url"
-          placeholder="https://..." oninput="previewImgUrl(this.value)"
-/>
+          placeholder="https://..." oninput="previewImgUrl(this.value)"/>
       </div>
     </div>
     <div class="adm-edit-footer">
