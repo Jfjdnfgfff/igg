@@ -531,7 +531,7 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-login-err.show{display:block}
 .adm-login-close{position:absolute;top:14px;left:14px;background:var(--gray-100);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:var(--t)}
 .adm-login-close:hover{background:var(--gray-200)}
-.adm-panel{position:fixed;inset:0;z-index:9998;background:#f0f4f8;display:none;flex-direction:column;overflow:hidden;padding-top:env(safe-area-inset-top,0px)}
+.adm-panel{position:fixed;inset:0;z-index:9998;background:#f0f4f8;display:none;flex-direction:column;overflow:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);touch-action:none}
 .adm-panel.show{display:flex}
 .adm-header{background:#fff;border-bottom:1.5px solid var(--gray-200);padding:14px 24px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-sm);flex-shrink:0;flex-wrap:wrap}
 .adm-header-logo{font-size:17px;font-weight:900;color:var(--blue)}
@@ -546,14 +546,14 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 .adm-btn-danger:hover{background:#c0392b}
 .adm-btn-ghost{background:var(--gray-100);color:var(--gray-600);border:1.5px solid var(--gray-200)}
 .adm-btn-ghost:hover{background:var(--gray-200)}
-.adm-body{flex:1;overflow-y:auto;padding:24px}
+.adm-body{flex:1;min-height:0;overflow-y:scroll;overflow-x:hidden;padding:24px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
 .adm-section-title{font-size:16px;font-weight:900;color:var(--gray-900);margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .adm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
 .adm-stat-card{background:#fff;border-radius:var(--r-lg);padding:18px 20px;border:1.5px solid var(--gray-200);box-shadow:var(--shadow-sm)}
 .adm-stat-val{font-size:26px;font-weight:900;color:var(--blue);margin-bottom:2px}
 .adm-stat-lbl{font-size:12px;color:var(--gray-400);font-weight:700}
 /* PRODUCTS GRID — card-based, works on all screen sizes */
-.adm-prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:8px}
+.adm-prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:32px;padding-bottom:16px}
 .adm-prod-card{background:#fff;border-radius:14px;border:1.5px solid var(--gray-200);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .18s,border-color .18s}
 .adm-prod-card:hover{border-color:var(--blue);box-shadow:0 4px 18px rgba(0,87,184,.13)}
 .adm-prod-card-img{width:100%;height:130px;object-fit:cover;display:block;background:var(--blue-l)}
@@ -643,9 +643,14 @@ footer{background:#0d1b2e;padding:44px 28px 22px}
 @media(max-width:720px){
   .adm-stats{grid-template-columns:repeat(2,1fr)}
   .adm-two-col{grid-template-columns:1fr}
-  .adm-prod-grid{grid-template-columns:1fr}
+  .adm-prod-grid{grid-template-columns:repeat(2,1fr);gap:9px}
   .adm-header{padding:10px 14px;gap:8px}
-  .adm-body{padding:14px}
+  .adm-body{padding:12px}
+  .adm-prod-card-img{height:100px}
+  .adm-prod-card-body{padding:8px 10px}
+  .adm-prod-card-name{font-size:12px}
+  .adm-prod-card-footer{padding:7px 10px;gap:5px}
+  .adm-edit-btn{font-size:11px;padding:6px 7px}
 }
 </style>
 </head>
@@ -1861,14 +1866,47 @@ function adminLogin(){
 /* ══════════════════════════════════════
    ADMIN — OPEN/CLOSE PANEL
 ══════════════════════════════════════ */
+let _bodyScrollY=0;
+let _admTouchHandler=null;
+
 function openAdminPanel(){
-  document.getElementById('adminPanel').classList.add('show');
+  _bodyScrollY=window.scrollY||window.pageYOffset;
+  document.body.style.position='fixed';
+  document.body.style.top='-'+_bodyScrollY+'px';
+  document.body.style.width='100%';
   document.body.style.overflow='hidden';
+  document.getElementById('adminPanel').classList.add('show');
+  const admBody=document.getElementById('adminBody');
+  if(admBody) admBody.scrollTop=0;
+
+  /* iOS one-finger scroll fix: allow touchmove inside #adminBody only */
+  if(_admTouchHandler) document.removeEventListener('touchmove',_admTouchHandler,{passive:false});
+  _admTouchHandler=function(e){
+    const inside=e.target.closest('#adminBody');
+    if(!inside){ e.preventDefault(); return; }
+    /* allow scroll only if adminBody can still scroll */
+    const el=admBody;
+    const up=e.touches[0].clientY>(_admLastTY||0);
+    _admLastTY=e.touches[0].clientY;
+    if(up&&el.scrollTop===0){ e.preventDefault(); return; }
+    if(!up&&el.scrollTop+el.clientHeight>=el.scrollHeight){ e.preventDefault(); return; }
+  };
+  document.addEventListener('touchmove',_admTouchHandler,{passive:false});
   renderAdminPanel();
 }
+let _admLastTY=0;
+
 function closeAdminPanel(){
   document.getElementById('adminPanel').classList.remove('show');
+  if(_admTouchHandler){
+    document.removeEventListener('touchmove',_admTouchHandler,{passive:false});
+    _admTouchHandler=null;
+  }
+  document.body.style.position='';
+  document.body.style.top='';
+  document.body.style.width='';
   document.body.style.overflow='';
+  window.scrollTo(0,_bodyScrollY);
 }
 
 /* ══════════════════════════════════════
