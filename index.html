@@ -807,15 +807,21 @@ function saveAdminDataToFirebase() {
 <!-- HEADER -->
 <header>
   <div class="hdr">
-    <a href="#" class="logo" onclick="showCats()">
-      <div class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><circle cx="12" cy="12" r="8.5" stroke="white" stroke-width="1.5"/><path d="M12 7v5M12 12h4M12 12H8" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
-      </div>
-      <div>
-        <div class="logo-name">You<em>Med</em></div>
-        <span class="logo-sub">متجرك الطبي الموثوق</span>
-      </div>
-    </a>
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+      <a href="#" class="logo" onclick="showCats()">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><circle cx="12" cy="12" r="8.5" stroke="white" stroke-width="1.5"/><path d="M12 7v5M12 12h4M12 12H8" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="logo-name">You<em>Med</em></div>
+          <span class="logo-sub">متجرك الطبي الموثوق</span>
+        </div>
+      </a>
+      <button onclick="showAdminLogin()" title="لوحة التحكم" style="display:inline-flex;align-items:center;gap:5px;background:var(--blue-l);color:var(--blue);border:1.5px solid rgba(0,87,184,.18);border-radius:50px;padding:6px 12px;font-family:'Tajawal',sans-serif;font-size:11px;font-weight:800;cursor:pointer;transition:all .2s;flex-shrink:0;white-space:nowrap" onmouseover="this.style.background='var(--blue)';this.style.color='#fff'" onmouseout="this.style.background='var(--blue-l)';this.style.color='var(--blue)'">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        إدارة
+      </button>
+    </div>
     <div class="search-wrap">
       <input class="search-input" id="searchInput" type="text" placeholder="ابحث عن منتج أو فئة..."/>
       <button class="search-btn" id="searchBtn" type="button" title="بحث">
@@ -1178,16 +1184,6 @@ function saveAdminDataToFirebase() {
   </div>
 </div>
 
-<!-- FLOATING WHATSAPP -->
-<div class="wa-float">
-  <div class="wa-label">
-    <svg viewBox="0 0 24 24" width="12" height="12" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.874L0 24l6.305-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.032-1.393l-.36-.214-3.734.979.996-3.643-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
-    نحن متاحون الآن
-  </div>
-  <a href="https://wa.me/213556482873" target="_blank" class="wa-btn">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.874L0 24l6.305-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.032-1.393l-.36-.214-3.734.979.996-3.643-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
-  </a>
-</div>
 
 <script>
 /* ══════════════════════════════════════
@@ -2709,13 +2705,6 @@ buildCatsGrid();
 refreshCartUI();
 </script>
 
-<!-- ══════════════ ADMIN FLOATING BUTTON ══════════════ -->
-<button class="adm-float-btn" onclick="showAdminLogin()" title="لوحة التحكم">
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2.2">
-    <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
-  </svg>
-  إدارة الموقع
-</button>
 
 </div><!-- /#mainSite -->
 
