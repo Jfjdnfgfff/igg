@@ -2172,6 +2172,8 @@ let _bodyScrollY=0;
 
 function _iosScrollLock(e){
   if(e.target.closest('#adminBody')) return;
+  if(e.target.closest('.adm-edit-overlay')) return;
+  if(e.target.closest('.adm-edit-box')) return;
   e.preventDefault();
 }
 function openAdminPanel(){
