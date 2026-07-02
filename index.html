@@ -2198,7 +2198,10 @@ function closeAdminPanel(){
   document.body.style.zoom='';
   document.removeEventListener('touchmove',_iosScrollLock);
   _resetViewportZoom();
-  window.scrollTo(0,_bodyScrollY);
+  /* إعادة بناء الفئات لتظهر أي تعديلات جديدة، والعودة للصفحة الرئيسية */
+  buildCatsGrid();
+  showCats();
+  window.scrollTo(0,0);
 }
 
 /* ══════════════════════════════════════
@@ -2743,6 +2746,7 @@ refreshCartUI();
     </div>
     <div class="adm-header-space"></div>
     <button class="adm-header-btn adm-btn-success" onclick="exportHTML()">⬇️ تصدير HTML</button>
+    <button class="adm-header-btn adm-btn-ghost" onclick="closeAdminPanel()">🏠 الرئيسية</button>
     <button class="adm-header-btn adm-btn-ghost" onclick="closeAdminPanel()">✕ إغلاق</button>
   </div>
   <div class="adm-body" id="adminBody"></div>
